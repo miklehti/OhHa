@@ -13,9 +13,9 @@ import tetris.Nappula;
  */
 public class Puikula extends Nappula {
 
-    public Puikula(int x, int y) {
+    public Puikula(int montakPalasta, int x, int y) {
 
-        super(x, y);
+        super(4, x, y);
         super.setTokaRivi(x + 1);
         super.setKolmasRivi(x + 2);
         super.setNeljasivi(x + 3);

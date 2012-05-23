@@ -13,11 +13,16 @@ public class Palanen {
     
     private int rivi;
     private int sarake;
+   
+   
     
     public Palanen(int rivi, int sarake){
         this.rivi =rivi;
         this.sarake =sarake;
+  
     }
+
+   
 
     public int getRivi() {
         return rivi;

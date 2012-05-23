@@ -10,11 +10,11 @@ import java.util.ArrayList;
  *
  * @author HP_User
  */
-public class Moykky {
+public class NappulaKasa {
 
     private ArrayList<Palanen> palaset;
 
-    public Moykky() {
+    public NappulaKasa() {
         palaset = new ArrayList<Palanen>();
     }
 
@@ -23,14 +23,12 @@ public class Moykky {
     }
 
     public void lisaaPalanenMoykkyyn(Nappula nappula) {
-        Palanen eka = nappula.getEka();
-        Palanen toka = nappula.getToka();
-        Palanen kolmas = nappula.getKolmas();
-        Palanen neljas = nappula.getNeljas();
-        palaset.add(eka);
-        palaset.add(toka);
-        palaset.add(kolmas);
-        palaset.add(neljas);
+        ArrayList<Palanen> nappulanPalat= nappula.getPalaset();
+        for(int i = 0; i<nappulanPalat.size();i++){
+             Palanen lisattava = nappulanPalat.get(i);
+             palaset.add(lisattava);
+        }
+
     }
 
     public void tiputaMoykkya(int i) {

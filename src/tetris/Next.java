@@ -10,38 +10,42 @@ package tetris;
  */
 public class Next {
 
-    private int next[][];
+    private Palanen next[][];
     private Nappula nappula;
 
+
     public Next() {
-        next = new int[6][6];
+    
+        next = new Palanen[6][6];
         for (int rivi = 0; rivi < next.length; rivi++) {
             for (int sarake = 0; sarake < next[0].length; sarake++) {
 
-                next[rivi][sarake] = 0;
+                next[rivi][sarake] = null;
 
 
             }
         }
     }
     
-     public void tulostaMatriisi() {
+    public void tulostaMatriisi() {
         for (int rivi = 0; rivi < next.length; ++rivi) {
             for (int sarake = 0; sarake < next[rivi].length; ++sarake) {
-                int alkionArvo = next[rivi][sarake];
+                int alkionArvo = 0;
+                Palanen palanen = next[rivi][sarake];
+                if (palanen == null) {
+                    alkionArvo = 0;
+                } else if (palanen instanceof ReunaPalanen) {
+                    alkionArvo = 5;
+                } else if (palanen instanceof TetrisPalanen) {
+                    alkionArvo = 1;
+                }
                 System.out.print(alkionArvo + ", ");
             }
             System.out.print("\n");
         }
         System.out.println("");
     }
-     
-       public void asetaNappulanPaikkaLaudallaYkkoseksi() {
-        next[nappula.annaEkaRivi()][nappula.annaEkaSarake()] = 1;
-        next[nappula.annaTokaRivi()][nappula.annaTokaSarake()] = 1;
-        next[nappula.annaKolmasRivi()][nappula.annaKolmasSarake()] = 1;
-        next[nappula.annaNeljasRivi()][nappula.annaNeljasSarake()] = 1;
-    }
+
 
     public void uusiNappulaLaudalle(Nappula nappula) {
         this.nappula = nappula;

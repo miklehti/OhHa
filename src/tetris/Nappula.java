@@ -11,13 +11,8 @@ import java.util.ArrayList;
  * @author HP_User
  */
 public abstract class Nappula {
-    
-    private  Palanen eka;
-    private Palanen toka;
-    private Palanen kolmas;
-    private Palanen neljas;
-    
-     private boolean onkoNappulaElossa;
+
+    private boolean onkoNappulaElossa;
     private int vari;
     private int korkeus;
     private int leveys;
@@ -26,21 +21,19 @@ public abstract class Nappula {
     private Palanen keskipiste;
     private int sade;
     private int aloitussade; //käytetään game over alueen laskentaan
-    
-     public Nappula(int x, int y) {
-          eka = new Palanen(x, y);
-        toka = new Palanen(x, y);
-        kolmas = new Palanen(x, y);
-        neljas = new Palanen(x, y);
-        palaset.add(eka);
-        palaset.add(toka);
-        palaset.add(kolmas);
-        palaset.add(neljas);
+
+    public Nappula(int montakoPalasta, int x, int y) {
+
+        for (int i = 0; i < montakoPalasta; i++) {
+            Palanen lisattava = new Palanen(x, y);
+            palaset.add(lisattava);
+
+        }
         onkoNappulaElossa = true;
         vari = 1;
-        keskipiste = toka; //default
-       
-  }
+        keskipiste = null;
+
+    }
 
     public int getAloitussade() {
         return aloitussade;
@@ -78,22 +71,31 @@ public abstract class Nappula {
         return onkoNappulaElossa;
     }
 
-    public void setEka(Palanen eka) {
-        this.eka = eka;
+    public void setPalanen(Palanen asetettava, int moneskoListassa) {
+        palaset.set(moneskoListassa, asetettava);
     }
 
-    public void setKolmas(Palanen kolmas) {
-        this.kolmas = kolmas;
+    public Palanen getPalanen(int moneskoListassa) {
+        return palaset.get(moneskoListassa);
     }
 
-    public void setNeljas(Palanen neljas) {
-        this.neljas = neljas;
+    public void setPalasenRivi(int rivi, int moneskoListassa) {
+        Palanen tutkittava = palaset.get(moneskoListassa);
+        tutkittava.setRivi(rivi);
     }
 
-    public void setToka(Palanen toka) {
-        this.toka = toka;
+    public void setPalasenSarake(int sarake, int moneskoListassa) {
+        Palanen tutkittava = palaset.get(moneskoListassa);
+        tutkittava.setSarake(sarake);
     }
-     
+
+    public int getPalasenRivi(int moneskoListassa) {
+        return palaset.get(moneskoListassa).getRivi();
+    }
+
+    public int getPalasenSarake(int moneskoListassa) {
+        return palaset.get(moneskoListassa).getSarake();
+    }
 
     public int getAsento() {
         return asento;
@@ -118,131 +120,41 @@ public abstract class Nappula {
     public void setKorkeus(int korkeus) {
         this.korkeus = korkeus;
     }
-     
-     
 
-  public void setEkaRivi(int rivi){
-      eka.setRivi(rivi);
-  }
-    public void setEkaSarake(int sarake){
-      eka.setSarake(sarake);
-  }
-      public void setTokaRivi(int rivi){
-      toka.setRivi(rivi);
-  }
-    public void setTokaSarake(int sarake){
-      toka.setSarake(sarake);
-  }
     
-          public void setKolmasRivi(int rivi){
-      kolmas.setRivi(rivi);
-  }
-    public void setKolmasSarake(int sarake){
-      kolmas.setSarake(sarake);
-  }
-          public void setNeljasivi(int rivi){
-      neljas.setRivi(rivi);
-  }
-    public void setNeljasSarake(int sarake){
-      neljas.setSarake(sarake);
-  }
-    
-    
-       public void setVari(int vari) {
-        this.vari = vari;
-    }
-
-    public Palanen getEka() {
-        return eka;
-    }
-
-    public Palanen getToka() {
-        return toka;
-    }
-
-    public Palanen getKolmas() {
-        return kolmas;
-    }
-
-    public Palanen getNeljas() {
-        return neljas;
-    }
 
     public int getVari() {
         return vari;
     }
 
-    public int annaEkaSarake() {
-        int vastaus = eka.getSarake();
-        return vastaus;
-    }
-
-    public int annaEkaRivi() {
-        int vastaus = eka.getRivi();
-        return vastaus;
-    }
-
-    public int annaTokaSarake() {
-        int vastaus = toka.getSarake();
-        return vastaus;
-    }
-
-    public int annaTokaRivi() {
-        int vastaus = toka.getRivi();
-        return vastaus;
-    }
-
-    public int annaKolmasSarake() {
-        int vastaus = kolmas.getSarake();
-        return vastaus;
-    }
-
-    public int annaKolmasRivi() {
-        int vastaus = kolmas.getRivi();
-        return vastaus;
-    }
-
-    public int annaNeljasSarake() {
-        int vastaus = neljas.getSarake();
-        return vastaus;
-    }
-
-    public int annaNeljasRivi() {
-        int vastaus = neljas.getRivi();
-        return vastaus;
-    }
+   
 
     public void liikuAlas() {
-        int uusiRiviEka = eka.getRivi() + 1;
-        int uusiRiviToka = toka.getRivi() + 1;
-        int uusiRiviKolmas = kolmas.getRivi() + 1;
-        int uusiRiviNeljas = neljas.getRivi() + 1;
-        eka.setRivi(uusiRiviEka);
-        toka.setRivi(uusiRiviToka);
-        kolmas.setRivi(uusiRiviKolmas);
-        neljas.setRivi(uusiRiviNeljas);
+        
+        for(int i = 0; i<palaset.size();i++){
+            Palanen tutkittava = palaset.get(i);
+            int uusiRivi = tutkittava.getRivi()+1;
+            tutkittava.setRivi(uusiRivi);
+        }
+        
     }
 
     public void liikuOikealle() {
-        int uusiSarakeEka = eka.getSarake() + 1;
-        int uusiSarakeToka = toka.getSarake() + 1;
-        int uusiSarakeKolmas = kolmas.getSarake() + 1;
-        int uusiSarakeNeljas = neljas.getSarake() + 1;
-        eka.setSarake(uusiSarakeEka);
-        toka.setSarake(uusiSarakeToka);
-        kolmas.setSarake(uusiSarakeKolmas);
-        neljas.setSarake(uusiSarakeNeljas);
+        
+        for(int i = 0; i<palaset.size();i++){
+            Palanen tutkittava = palaset.get(i);
+            int uusiSarake = tutkittava.getSarake()+1;
+            tutkittava.setRivi(uusiSarake);
+        }
+        
     }
 
     public void liikuVasemmalle() {
-        int uusiRiviEka = eka.getSarake() - 1;
-        int uusiRiviToka = toka.getSarake() - 1;
-        int uusiRiviKolmas = kolmas.getSarake() - 1;
-        int uusiRiviNeljas = neljas.getSarake() - 1;
-        eka.setSarake(uusiRiviEka);
-        toka.setSarake(uusiRiviToka);
-        kolmas.setSarake(uusiRiviKolmas);
-        neljas.setSarake(uusiRiviNeljas);
+         for(int i = 0; i<palaset.size();i++){
+            Palanen tutkittava = palaset.get(i);
+            int uusiSarake = tutkittava.getSarake()-1;
+            tutkittava.setRivi(uusiSarake);
+        }
     }
 
     public void setOnkoNappulaElossa(boolean onkoNappulaElossa) {
@@ -253,7 +165,5 @@ public abstract class Nappula {
         return onkoNappulaElossa;
     }
 
-    public abstract boolean pyorahda(ArrayList<Integer> tutkittavaAlue );
-
-  
+    public abstract boolean pyorahda(Palanen[][] tutkittavaAlue);
 }

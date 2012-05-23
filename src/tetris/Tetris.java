@@ -45,7 +45,7 @@ public class Tetris {
         pelilauta.tiputaNappulaaAlas();
         pelilauta.tulostaMatriisi();
         }
-                Moykky moykky = new Moykky();
+                NappulaKasa moykky = new NappulaKasa();
        pelilauta.uusiMoykkyLaudalle(moykky);
        pelilauta.muutaNappulaMoykyksi();
        pelilauta.asetaMoykynPalasetKolmosiksi();

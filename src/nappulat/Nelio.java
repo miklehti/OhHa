@@ -6,6 +6,7 @@ package nappulat;
 
 import java.util.ArrayList;
 import tetris.Nappula;
+import tetris.Palanen;
 
 /**
  *
@@ -13,23 +14,23 @@ import tetris.Nappula;
  */
 public class Nelio extends Nappula {
 
- 
-   
+    public Nelio(int montakoPalaa, int x, int y) {
 
-    public Nelio(int x, int y) {
-
-        super(x,y);
-        super.setTokaRivi(x+1);
-        super.setKolmasSarake(y+1);
-        super.setNeljasSarake(y+1);
-        super.setNeljasivi(x+1);
+        super(4, x, y);
+       
+        super.setPalasenRivi(x + 1, 1);
+        super.setPalasenSarake(y + 1, 2);
+        super.setPalasenRivi(x + 1, 3);
+        super.setPalasenSarake(y + 1, 3);
         super.setAsento(1);
         super.setKorkeus(2);
         super.setLeveys(2);
+        super.setAloitussade(2);
+        super.setKeskipiste(super.getPalanen(1));
+        super.setSade(2);
     }
 
-    public boolean pyorahda(ArrayList<Integer> tutkittavaAlue ){
+    public boolean pyorahda(Palanen[][]  tutkittavaAlue) {
         return false;
     }
- 
 }

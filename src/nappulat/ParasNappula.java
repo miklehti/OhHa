@@ -11,11 +11,11 @@ import tetris.Nappula;
  *
  * @author HP_User
  */
-public class sininenL extends Nappula{
-    
-    public sininenL(int x, int y) {
+public class ParasNappula extends Nappula {
 
-        super(x, y);
+    public ParasNappula(int x, int y) {
+
+        super(4, x, y);
         super.setTokaRivi(x + 1);
         super.setKolmasRivi(x + 2);
         super.setNeljasivi(x + 1);
@@ -128,5 +128,4 @@ public class sininenL extends Nappula{
         }
         return true;
     }
-    
 }
