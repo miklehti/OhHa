@@ -44,6 +44,10 @@ public class Pelilauta {
         
     }
     
+    public Palanen annaPelilaudanAlkio(int rivi, int sarake){
+        return pelilauta[rivi][sarake];
+    }
+    
     public void tulostaMatriisi() {
         for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
             for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
@@ -99,6 +103,13 @@ public class Pelilauta {
 //    }
     public void uusiNappulaLaudalle(Nappula nappula) {
         this.nappula = nappula;
+         ArrayList<Palanen> palaset = nappula.getPalaset();
+        for (int i = 0; i < palaset.size(); i++) {
+            Palanen palanen = palaset.get(i);
+            int rivinNumero = palanen.getRivi();
+            int sarakeNumero = palanen.getSarake();
+            pelilauta[rivinNumero][sarakeNumero] = palanen;
+        }
         
     }
     

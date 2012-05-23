@@ -8,6 +8,9 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import nappulat.Nelio;
 import tetris.Pelilauta;
+import tetris.Palanen;
+import tetris.*;
+import nappulat.*;
 
 /**
  *
@@ -39,6 +42,24 @@ public class PelilautaTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
+    
+     @Test
+    public void uusiaNappulaPelilaudalle() {
+        Nelio nelio = new Nelio(4, 0, 5);
+        pelilauta.uusiNappulaLaudalle(nelio);
+        //      pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
+          boolean onnistuiko ;
+          Palanen tutkittava = pelilauta.annaPelilaudanAlkio(0, 5);
+                  
+      if(tutkittava instanceof tetris.TetrisPalanen){
+            onnistuiko = true;
+        }else{
+          onnistuiko = false;
+      }
+
+        assertEquals(true,
+                onnistuiko);
+    }
 
     @Test
     public void tiputaNappulaaAlasTrue() {
@@ -165,7 +186,7 @@ public class PelilautaTest {
     public void onkoPeliOhiTrue() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        
+        pelilauta.tulostaMatriisi();
         boolean onnistuiko = pelilauta.onkoPeliOhi();
         assertEquals(true,
                 onnistuiko);
