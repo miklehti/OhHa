@@ -20,12 +20,12 @@ public abstract class Nappula {
     private ArrayList<Palanen> palaset = new ArrayList<Palanen>();
     private Palanen keskipiste;
     private int sade;
-    private int aloitussade; //käytetään game over alueen laskentaan
+    private int aloituskorkeus; //käytetään game over alueen laskentaan
 
     public Nappula(int montakoPalasta, int x, int y) {
 
         for (int i = 0; i < montakoPalasta; i++) {
-            Palanen lisattava = new Palanen(x, y);
+            TetrisPalanen lisattava = new TetrisPalanen(x, y);
             palaset.add(lisattava);
 
         }
@@ -35,9 +35,7 @@ public abstract class Nappula {
 
     }
 
-    public int getAloitussade() {
-        return aloitussade;
-    }
+ 
 
     public Palanen getKeskipiste() {
         return keskipiste;
@@ -51,9 +49,15 @@ public abstract class Nappula {
         return sade;
     }
 
-    public void setAloitussade(int aloitussade) {
-        this.aloitussade = aloitussade;
+    public int getAloituskorkeus() {
+        return aloituskorkeus;
     }
+
+    public void setAloituskorkeus(int aloituskorkeus) {
+        this.aloituskorkeus = aloituskorkeus;
+    }
+
+
 
     public void setKeskipiste(Palanen keskipiste) {
         this.keskipiste = keskipiste;
@@ -144,7 +148,7 @@ public abstract class Nappula {
         for(int i = 0; i<palaset.size();i++){
             Palanen tutkittava = palaset.get(i);
             int uusiSarake = tutkittava.getSarake()+1;
-            tutkittava.setRivi(uusiSarake);
+            tutkittava.setSarake(uusiSarake);
         }
         
     }
@@ -153,7 +157,7 @@ public abstract class Nappula {
          for(int i = 0; i<palaset.size();i++){
             Palanen tutkittava = palaset.get(i);
             int uusiSarake = tutkittava.getSarake()-1;
-            tutkittava.setRivi(uusiSarake);
+            tutkittava.setSarake(uusiSarake);
         }
     }
 

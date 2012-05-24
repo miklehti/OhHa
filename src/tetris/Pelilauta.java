@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author HP_User
  */
 public class Pelilauta {
-    
+
     private Palanen pelilauta[][];
     private Nappula nappula;
     private NappulaKasa moykky;
@@ -19,13 +19,13 @@ public class Pelilauta {
 //    private Palanen palanen;
 
     public Pelilauta(int rivi, int sarake) {
-        
+         moykky = new  NappulaKasa();
         pelilauta = new Palanen[rivi][sarake];
         for (rivi = 0; rivi < pelilauta.length; rivi++) {
             for (sarake = 0; sarake < pelilauta[0].length; sarake++) {
-                
+
                 pelilauta[rivi][sarake] = null;
-                
+
                 if (rivi == pelilauta.length - 1) {
                     Palanen reunapala = new ReunaPalanen(rivi, sarake);
                     pelilauta[rivi][sarake] = reunapala;
@@ -38,16 +38,16 @@ public class Pelilauta {
                     Palanen reunapala = new ReunaPalanen(rivi, sarake);
                     pelilauta[rivi][sarake] = reunapala;
                 }
-                
+
             }
         }
-        
+
     }
-    
-    public Palanen annaPelilaudanAlkio(int rivi, int sarake){
+
+    public Palanen annaPelilaudanAlkio(int rivi, int sarake) {
         return pelilauta[rivi][sarake];
     }
-    
+
     public void tulostaMatriisi() {
         for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
             for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
@@ -66,7 +66,7 @@ public class Pelilauta {
         }
         System.out.println("");
     }
-    
+
     public int pelilaudanSumma() {
         int summa = 0;
         for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
@@ -82,7 +82,7 @@ public class Pelilauta {
                 }
                 summa = summa + alkionArvo;
             }
-            
+
         }
         return summa;
     }
@@ -91,33 +91,27 @@ public class Pelilauta {
 //        int arvo = pelilauta[rivi][sarake];
 //        return arvo;
 //    }
-//    public void asetaNappulanPaikkaLaudallaYkkoseksi() {
-//        ArrayList<Palanen> palaset = nappula.getPalaset();
-//        for (int i = 0; i < palaset.size(); i++) {
-//            Palanen palanen = palaset.get(i);
-//            int rivinNumero = palanen.getRivi();
-//            int sarakeNumero = palanen.getSarake();
-//            pelilauta[rivinNumero][sarakeNumero] = 1;
-//        }
-//
-//    }
-    public void uusiNappulaLaudalle(Nappula nappula) {
-        this.nappula = nappula;
-         ArrayList<Palanen> palaset = nappula.getPalaset();
-        for (int i = 0; i < palaset.size(); i++) {
+    public void asetaNappulanPaikkaLaudalla() {
+        ArrayList<Palanen> palaset = nappula.getPalaset();
+          for (int i = 0; i < palaset.size(); i++) {
             Palanen palanen = palaset.get(i);
             int rivinNumero = palanen.getRivi();
             int sarakeNumero = palanen.getSarake();
             pelilauta[rivinNumero][sarakeNumero] = palanen;
         }
-        
     }
-    
+    public void uusiNappulaLaudalle(Nappula nappula) {
+        this.nappula = nappula;
+        ArrayList<Palanen> palaset = nappula.getPalaset();
+      
+
+    }
+
     public void uusiNappulaKasaLaudalle(NappulaKasa moykky) {
         this.moykky = moykky;
-        
+
     }
-    
+
     public boolean muutaNappulaMoykyksi() {
         if (nappula.isNappulaElossa() == false) {
             moykky.lisaaPalanenMoykkyyn(nappula);
@@ -137,15 +131,15 @@ public class Pelilauta {
 //        }
 //    }
 
-//    public void poistaNappulaNakyvista() {
-//        for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
-//            for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
-//                if (pelilauta[rivi][sarake] == 1) {
-//                    pelilauta[rivi][sarake] = 0;
-//                }
-//            }
-//        }
-//    }
+    public void poistaNappulaNakyvista() {
+        for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
+            for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
+                if (pelilauta[rivi][sarake] instanceof TetrisPalanen) {
+                    pelilauta[rivi][sarake] = null;
+                }
+            }
+        }
+    }
     //muuta että ArrayList
     public boolean voinkoLiikkuaAlas() {
         ArrayList<Palanen> palaset = nappula.getPalaset();
@@ -158,15 +152,15 @@ public class Pelilauta {
                 return false;
             }
         }
-        
-        
+
+
         return true;
     }
-    
+
     public boolean voinkoLiikkuaOikealle() {
-        
+
         ArrayList<Palanen> palaset = nappula.getPalaset();
-        
+
         for (int i = 0; i < palaset.size(); i++) {
             Palanen palanen = palaset.get(i);
             int rivinNumero = palanen.getRivi();
@@ -178,10 +172,10 @@ public class Pelilauta {
         }
         return true;
     }
-    
+
     public boolean voinkoLiikkuaVasemmalle() {
         ArrayList<Palanen> palaset = nappula.getPalaset();
-        
+
         for (int i = 0; i < palaset.size(); i++) {
             Palanen palanen = palaset.get(i);
             int rivinNumero = palanen.getRivi();
@@ -193,7 +187,7 @@ public class Pelilauta {
         }
         return true;
     }
-    
+
     public boolean tiputaNappulaaAlas() {
         if (nappula.isNappulaElossa() == false) {
             return false;
@@ -207,7 +201,7 @@ public class Pelilauta {
         //   asetaNappulanPaikkaLaudallaYkkoseksi();
         return true;
     }
-    
+
     public boolean siirraNappullaaOikealle() {
         if (nappula.isNappulaElossa() == false) {
             return false;
@@ -220,7 +214,7 @@ public class Pelilauta {
         //    asetaNappulanPaikkaLaudallaYkkoseksi();
         return true;
     }
-    
+
     public boolean siirraNappullaaVasemmalle() {
         if (nappula.isNappulaElossa() == false) {
             return false;
@@ -233,65 +227,82 @@ public class Pelilauta {
         //   asetaNappulanPaikkaLaudallaYkkoseksi();
         return true;
     }
-    
+
     public boolean onkoRysaytettavaa() {
         boolean onkoRysaytettavaa = false;
-        for (int rivi = 0; rivi < pelilauta.length; rivi++) {
-            
-            
-            for (int sarake = 0; sarake < pelilauta[0].length; sarake++) {
+        for (int rivi = 0; rivi < pelilauta.length-1; rivi++) {
+
+
+            for (int sarake = 1; sarake < pelilauta[0].length-1; sarake++) {
                 if (pelilauta[rivi][sarake] == null) {
                     break;
                 }
                 onkoRysaytettavaa = true;
             }
-            
+
         }
         return onkoRysaytettavaa;
     }
-    
+
     public ArrayList<Integer> annaRysaytettavatRivit() {
         ArrayList<Integer> rysaytettavat = new ArrayList<Integer>();
         for (int rivi = 0; rivi < pelilauta.length; rivi++) {
-            
-            
+
+
             for (int sarake = 0; sarake < pelilauta[0].length; sarake++) {
                 if (pelilauta[rivi][sarake] == null) {
                     break;
                 }
                 rysaytettavat.add(rivi);
-                
+
             }
-            
+
         }
         return rysaytettavat;
     }
-    
+
     public void rysayta(ArrayList<Integer> rysaytettavat) {
         for (int i = 0; i < rysaytettavat.size(); i++) {
-            
+
             moykky.tiputaMoykkya(i);
         }
     }
 
-   
-    public Palanen [][] annaTutkittavaAlue() {
-        
-        Palanen[][] tutkittavaAlue = new Palanen[2*nappula.getSade()+1][2*nappula.getSade()+1];
+    public Palanen[][] annaTutkittavaAlue() {
+
+        if (nappula.getSade() == 0) {
+            return null;
+        }
+        Palanen[][] tutkittavaAlue = new Palanen[2 * nappula.getSade() + 1][2 * nappula.getSade() + 1];
         Palanen keskipiste = nappula.getKeskipiste();
-        int keskipisteRivi = keskipiste.getRivi();
-        int keskipisteSarake = keskipiste.getSarake();
-        // tähän miten haetaan 3*3 tai 5*5 alue
-        
+        int rivi = keskipiste.getRivi() - nappula.getSade();
+        int sarake = keskipiste.getSarake() - nappula.getSade();        
+        for (int i = 0; i < 2 * nappula.getSade() + 1; i++) {
+            for (int j = 0; j < 2 * nappula.getSade() + 1; j++) {
+                if (rivi < 0 || sarake < 0 || sarake == 0) {
+                    Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
+                    tutkittavaAlue[rivi][sarake] = reunapalanen;
+                } else if (rivi == pelilauta.length - 1 || sarake == pelilauta[0].length - 1) {
+                    Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
+                    tutkittavaAlue[rivi][sarake] = reunapalanen;
+                } else{
+                    tutkittavaAlue[rivi][sarake] = null;
+                }
+
+            }
+        }
         return tutkittavaAlue;
     }
-    
+
     public boolean pyoritaNappulaa() {
-        Palanen[][]  tutkittavaAlue = annaTutkittavaAlue();
+        Palanen[][] tutkittavaAlue = annaTutkittavaAlue();
         boolean onnistuiko = nappula.pyorahda(tutkittavaAlue);
         return onnistuiko;
     }
-    
+    public void muutaNappulaKuolleeksi(){
+    nappula.setOnkoNappulaElossa(false);
+}
+
     public boolean onkoPeliOhi() {
         for (int rivi = 0; rivi < GameOverAlueenKokoRiveina; rivi++) {
             for (int sarake = 0; sarake < pelilauta[0].length; sarake++) {

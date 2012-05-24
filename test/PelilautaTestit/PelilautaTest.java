@@ -19,6 +19,7 @@ import nappulat.*;
 public class PelilautaTest {
 
     Pelilauta pelilauta;
+   
 
     public PelilautaTest() {
     }
@@ -34,6 +35,7 @@ public class PelilautaTest {
     @Before
     public void setUp() {
         pelilauta = new Pelilauta(23, 12);
+       
     }
 
     @After
@@ -42,20 +44,21 @@ public class PelilautaTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    
-     @Test
+
+    @Test
     public void uusiaNappulaPelilaudalle() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //      pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-          boolean onnistuiko ;
-          Palanen tutkittava = pelilauta.annaPelilaudanAlkio(0, 5);
-                  
-      if(tutkittava instanceof tetris.TetrisPalanen){
+        pelilauta.asetaNappulanPaikkaLaudalla();
+        boolean onnistuiko;
+        Palanen tutkittava = pelilauta.annaPelilaudanAlkio(0, 5);
+//        System.out.println("uusiaNappulaPelilaudalle");
+//        pelilauta.tulostaMatriisi();
+        if (tutkittava instanceof tetris.TetrisPalanen) {
             onnistuiko = true;
-        }else{
-          onnistuiko = false;
-      }
+        } else {
+            onnistuiko = false;
+        }
 
         assertEquals(true,
                 onnistuiko);
@@ -65,22 +68,33 @@ public class PelilautaTest {
     public void tiputaNappulaaAlasTrue() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //      pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-        boolean onnistuiko = pelilauta.tiputaNappulaaAlas();
+        pelilauta.asetaNappulanPaikkaLaudalla();
 
+        boolean onnistuiko = pelilauta.tiputaNappulaaAlas();
+        pelilauta.poistaNappulaNakyvista();
+        pelilauta.asetaNappulanPaikkaLaudalla();
+//        System.out.println("tiputaNappulaaAlasTrue");
+//        pelilauta.tulostaMatriisi();
         assertEquals(true,
                 onnistuiko);
     }
 
     @Test
-    public void tiputaNappulaaAlasFalse() {
+    public void tiputaNappulaaAlasReunaVastassaFalse() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //     pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
+        pelilauta.asetaNappulanPaikkaLaudalla();
+
+
         for (int i = 0; i < 20; i++) {
+            pelilauta.poistaNappulaNakyvista();
             pelilauta.tiputaNappulaaAlas();
-//        pelilauta.tulostaMatriisi();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+//            System.out.println("tiputaNappulaaAlasReunaVastassaFalse");
+//            pelilauta.tulostaMatriisi();
         }
+//        System.out.println("tiputaNappulaaAlasReunaVastassaFalse");
+//        pelilauta.tulostaMatriisi();
         boolean onnistuiko = pelilauta.tiputaNappulaaAlas();
 
         assertEquals(false,
@@ -91,11 +105,17 @@ public class PelilautaTest {
     public void siirraNappulaaOikealleFalse() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //   pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
+        pelilauta.asetaNappulanPaikkaLaudalla();
+
         for (int i = 0; i < 7; i++) {
+            pelilauta.poistaNappulaNakyvista();
             pelilauta.siirraNappullaaOikealle();
-//        pelilauta.tulostaMatriisi();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+            System.out.println("siirraNappulaaOikealleFalse");
+            pelilauta.tulostaMatriisi();
         }
+        System.out.println("siirraNappulaaOikealleFalse");
+        pelilauta.tulostaMatriisi();
         boolean onnistuiko = pelilauta.siirraNappullaaOikealle();
 
         assertEquals(false,
@@ -106,13 +126,21 @@ public class PelilautaTest {
     public void siirraNappulaaOikealleTrue() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //   pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-        for (int i = 0; i < 3; i++) {
-            pelilauta.siirraNappullaaOikealle();
-//        pelilauta.tulostaMatriisi();
-        }
-        boolean onnistuiko = pelilauta.siirraNappullaaOikealle();
+        pelilauta.asetaNappulanPaikkaLaudalla();
 
+        for (int i = 0; i < 3; i++) {
+            pelilauta.poistaNappulaNakyvista();
+            pelilauta.siirraNappullaaOikealle();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+//            System.out.println("siirraNappulaaOikealleTrue");
+//            pelilauta.tulostaMatriisi();
+        }
+       
+        boolean onnistuiko = pelilauta.siirraNappullaaOikealle();
+        pelilauta.poistaNappulaNakyvista();
+        pelilauta.asetaNappulanPaikkaLaudalla();
+//        System.out.println("siirraNappulaaOikealleTrue");
+//        pelilauta.tulostaMatriisi();
         assertEquals(true,
                 onnistuiko);
     }
@@ -121,13 +149,20 @@ public class PelilautaTest {
     public void siirraNappulaaVasemmalleTrue() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        //    pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-        for (int i = 0; i < 3; i++) {
-            pelilauta.siirraNappullaaVasemmalle();
-//        pelilauta.tulostaMatriisi();
-        }
-        boolean onnistuiko = pelilauta.siirraNappullaaVasemmalle();
+        pelilauta.asetaNappulanPaikkaLaudalla();
 
+        for (int i = 0; i < 3; i++) {
+            pelilauta.poistaNappulaNakyvista();
+            pelilauta.siirraNappullaaVasemmalle();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+//            System.out.println("siirraNappulaaVasemmalleTrue");
+//            pelilauta.tulostaMatriisi();
+        }
+//        System.out.println("siirraNappulaaVasemmalleTrue");
+//        pelilauta.tulostaMatriisi();
+        boolean onnistuiko = pelilauta.siirraNappullaaVasemmalle();
+        pelilauta.poistaNappulaNakyvista();
+        pelilauta.asetaNappulanPaikkaLaudalla();
         assertEquals(true,
                 onnistuiko);
     }
@@ -136,13 +171,23 @@ public class PelilautaTest {
     public void siirraNappulaaVasemmalleFalse() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
-        // pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-        for (int i = 0; i < 6; i++) {
-            pelilauta.siirraNappullaaVasemmalle();
-//        pelilauta.tulostaMatriisi();
-        }
-        boolean onnistuiko = pelilauta.siirraNappullaaVasemmalle();
+        pelilauta.asetaNappulanPaikkaLaudalla();
 
+        for (int i = 0; i < 6; i++) {
+            pelilauta.poistaNappulaNakyvista();
+            pelilauta.siirraNappullaaVasemmalle();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+//            System.out.println("siirraNappulaaVasemmalleFalse");
+//            pelilauta.tulostaMatriisi();
+
+        }
+
+        boolean onnistuiko = pelilauta.siirraNappullaaVasemmalle();
+        pelilauta.poistaNappulaNakyvista();
+
+        pelilauta.asetaNappulanPaikkaLaudalla();
+//        System.out.println("siirraNappulaaVasemmalleFalse");
+//        pelilauta.tulostaMatriisi();
         assertEquals(false,
                 onnistuiko);
     }
@@ -158,21 +203,32 @@ public class PelilautaTest {
 
     @Test
     public void muutaNappulaMoykyksiTrue() {
-        Nelio nelio = new Nelio(4, 0, 5);
+           Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
+        pelilauta.asetaNappulanPaikkaLaudalla();
+
         for (int i = 0; i < 20; i++) {
+            pelilauta.poistaNappulaNakyvista();
             pelilauta.tiputaNappulaaAlas();
-//        pelilauta.tulostaMatriisi();
+            pelilauta.asetaNappulanPaikkaLaudalla();
+//            System.out.println("muutaNappulaMoykyksiTrue");
+//            pelilauta.tulostaMatriisi();
         }
-        boolean onnistuiko = pelilauta.muutaNappulaMoykyksi();
+        
+        boolean onnistuiko =  pelilauta.tiputaNappulaaAlas();
+        if(onnistuiko==false){
+            pelilauta.muutaNappulaKuolleeksi();
+        }
+        boolean onnituikoMuunnos = pelilauta.muutaNappulaMoykyksi();;
         assertEquals(true,
-                onnistuiko);
+                onnituikoMuunnos);
     }
 
     @Test
     public void onkoRysaytettavaaFalse() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
+        pelilauta.asetaNappulanPaikkaLaudalla();
         for (int i = 0; i < 20; i++) {
             pelilauta.tiputaNappulaaAlas();
 //        pelilauta.tulostaMatriisi();
@@ -186,7 +242,18 @@ public class PelilautaTest {
     public void onkoPeliOhiTrue() {
         Nelio nelio = new Nelio(4, 0, 5);
         pelilauta.uusiNappulaLaudalle(nelio);
+           pelilauta.asetaNappulanPaikkaLaudalla();
         pelilauta.tulostaMatriisi();
+        boolean onnistuiko = pelilauta.onkoPeliOhi();
+        assertEquals(true,
+                onnistuiko);
+    }
+
+    @Test
+    public void annaTutkittavaAlue() {
+        Nelio nelio = new Nelio(4, 0, 5);
+        pelilauta.uusiNappulaLaudalle(nelio);
+        pelilauta.annaTutkittavaAlue();
         boolean onnistuiko = pelilauta.onkoPeliOhi();
         assertEquals(true,
                 onnistuiko);
