@@ -168,6 +168,13 @@ public abstract class Nappula {
     public boolean isNappulaElossa() {
         return onkoNappulaElossa;
     }
+    
+    public void muutaKoordinaatteja(Palanen pala, int rivi, int sarake) {
+        int uusiEkaRivi = pala.getRivi() + rivi;
+        pala.setRivi(uusiEkaRivi);
+        int uusiEkaSarake = pala.getSarake() + sarake;
+        pala.setSarake(uusiEkaSarake);
+    }
 
     public abstract boolean pyorahda(Palanen[][] tutkittavaAlue);
 }
