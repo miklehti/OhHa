@@ -98,8 +98,10 @@ public class Puikula extends Nappula {
         }
         if (myotaPaivaan == true) {
             muutaKoordinaatteja(pala, rivi, sarake);
+             super.setAsento(2);
         } else {
             muutaKoordinaatteja(pala, rivi * (-1), sarake * (-1));
+             super.setAsento(1);
         }
 
     }
@@ -107,16 +109,12 @@ public class Puikula extends Nappula {
     public void pyorahdys(boolean myotaPaivaan) {
         ArrayList<Palanen> palaset = super.getPalaset();
 
-        for (int i = 0; i < palaset.size(); i++) {
-            if (myotaPaivaan == true) {
+        for (int i = 0; i < palaset.size(); i++) {          
                 pyoraytaPalaa(palaset, i, myotaPaivaan);
-            } else {
-                pyoraytaPalaa(palaset, i, myotaPaivaan);
-            }
 
         }
         super.setPalaset(palaset);
-        super.setAsento(2);
+       
     }
 
     public boolean pyorahda(Palanen[][] tutkittavaAlue) {

@@ -21,20 +21,29 @@ public class ParasNappula extends Nappula {
         super(4, x, y);
 
         ArrayList<Palanen> palaset = super.getPalaset();
-        Palanen toka = palaset.get(1);
-        toka.setSarake(y + 1);
 
-        Palanen kolmas = palaset.get(2);
-        kolmas.setSarake(y + 2);
+        for (int i = 1; i < palaset.size(); i++) {
+            int rivi = 0;
+            int sarake = 0;
 
-        Palanen neljas = palaset.get(3);
-        neljas.setRivi(x + 1);
-        neljas.setSarake(y + 1);
+            Palanen pala = palaset.get(i);
+            if (i == 1) {
+                rivi = 0;
+                sarake = 1;
+            }
+            if (i == 2) {
+                rivi = 0;
+                sarake = 2;
+            }
+            if (i == 3) {
+                rivi = 1;
+                sarake = 1;
+            }
+            muutaKoordinaatteja(pala, rivi, sarake);
+        }
 
         super.setPalaset(palaset);
         super.setAsento(1);
-        super.setKorkeus(2);
-        super.setLeveys(3);
         super.setAloituskorkeus(2);
         super.setKeskipiste(super.getPalanen(1));
         super.setSade(1);
@@ -44,34 +53,25 @@ public class ParasNappula extends Nappula {
     public boolean voinkoPyoria(Palanen[][] tutkittavaAlue) {
         int asento = super.getAsento();
         if (asento == 1) {
-            if (tutkittavaAlue[0][1] instanceof ReunaPalanen) {
+            if (tutkittavaAlue[0][1] instanceof Palanen) {
                 return false;
             }
-            if (tutkittavaAlue[0][1] instanceof TetrisPalanen) {
-                return false;
-            }
+
         }
         if (asento == 2) {
-            if (tutkittavaAlue[1][2] instanceof ReunaPalanen) {
+            if (tutkittavaAlue[1][2] instanceof Palanen) {
                 return false;
             }
-            if (tutkittavaAlue[1][2] instanceof TetrisPalanen) {
-                return false;
-            }
+
         }
         if (asento == 3) {
-            if (tutkittavaAlue[2][1] instanceof ReunaPalanen) {
+            if (tutkittavaAlue[2][1] instanceof Palanen) {
                 return false;
             }
-            if (tutkittavaAlue[2][1] instanceof TetrisPalanen) {
-                return false;
-            }
+
         }
         if (asento == 4) {
-               if (tutkittavaAlue[1][0] instanceof ReunaPalanen) {
-                return false;
-            }
-            if (tutkittavaAlue[1][0] instanceof TetrisPalanen) {
+            if (tutkittavaAlue[1][0] instanceof Palanen) {
                 return false;
             }
         }
@@ -81,116 +81,115 @@ public class ParasNappula extends Nappula {
     public void toteutaPyorahdys() {
         int asento = super.getAsento();
         if (asento == 1) {
-             ArrayList<Palanen> palaset = super.getPalaset();
+            pyorahdysYksi(true);
 
-            Palanen eka = palaset.get(0);
-            int uusiEkaRivi = eka.getRivi() - 1;
-            eka.setRivi(uusiEkaRivi);
-            int uusiEkaSarake = eka.getSarake() + 1;
-            eka.setSarake(uusiEkaSarake);
-
-            Palanen kolmas = palaset.get(2);
-            int uusiKolmaRivi = kolmas.getRivi() + 1;
-            kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() - 1;
-            kolmas.setSarake(uusiKolmasSarake);
-
-            Palanen neljas = palaset.get(3);
-            int uusiNeljasRivi = neljas.getRivi() -1;
-            neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() - 1;
-            neljas.setSarake(uusiNeljasSarake);
-
-            super.setPalaset(palaset);
-            super.setAsento(2);
-            
         }
         if (asento == 2) {
-             ArrayList<Palanen> palaset = super.getPalaset();
-
-            Palanen eka = palaset.get(0);
-            int uusiEkaRivi = eka.getRivi() + 1;
-            eka.setRivi(uusiEkaRivi);
-            int uusiEkaSarake = eka.getSarake() + 1;
-            eka.setSarake(uusiEkaSarake);
-
-            Palanen kolmas = palaset.get(2);
-            int uusiKolmaRivi = kolmas.getRivi() - 1;
-            kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() - 1;
-            kolmas.setSarake(uusiKolmasSarake);
-
-            Palanen neljas = palaset.get(3);
-            int uusiNeljasRivi = neljas.getRivi() -1;
-            neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() +1;
-            neljas.setSarake(uusiNeljasSarake);
-
-            super.setPalaset(palaset);
-            super.setAsento(3);
+            pyorahdysKaksi(true);
 
         }
         if (asento == 3) {
-            
-             ArrayList<Palanen> palaset = super.getPalaset();
+            pyorahdysYksi(false);
 
-            Palanen eka = palaset.get(0);
-            int uusiEkaRivi = eka.getRivi() +1;
-            eka.setRivi(uusiEkaRivi);
-            int uusiEkaSarake = eka.getSarake() - 1;
-            eka.setSarake(uusiEkaSarake);
 
-            Palanen kolmas = palaset.get(2);
-            int uusiKolmaRivi = kolmas.getRivi() - 1;
-            kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() + 1;
-            kolmas.setSarake(uusiKolmasSarake);
-
-            Palanen neljas = palaset.get(3);
-            int uusiNeljasRivi = neljas.getRivi() + 1;
-            neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() + 1;
-            neljas.setSarake(uusiNeljasSarake);
-
-            super.setPalaset(palaset);
-            super.setAsento(4);
-        
-      
         }
         if (asento == 4) {
-             ArrayList<Palanen> palaset = super.getPalaset();
+            pyorahdysKaksi(false);
 
-            Palanen eka = palaset.get(0);
-            int uusiEkaRivi = eka.getRivi() - 1;
-            eka.setRivi(uusiEkaRivi);
-            int uusiEkaSarake = eka.getSarake() - 1;
-            eka.setSarake(uusiEkaSarake);
-
-            Palanen kolmas = palaset.get(2);
-            int uusiKolmaRivi = kolmas.getRivi() + 1;
-            kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() + 1;
-            kolmas.setSarake(uusiKolmasSarake);
-
-            Palanen neljas = palaset.get(3);
-            int uusiNeljasRivi = neljas.getRivi() + 1;
-            neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() - 1;
-            neljas.setSarake(uusiNeljasSarake);
-
-            super.setPalaset(palaset);
-            super.setAsento(1);
-      
         }
 
     }
+    
+     public void pyorahdysYksi(boolean myotaPaivaan) {
+        ArrayList<Palanen> palaset = super.getPalaset();
+
+        for (int i = 0; i < palaset.size(); i++) {          
+                pyoraytaPalaaYksi(palaset, i, myotaPaivaan);
+
+        }
+        super.setPalaset(palaset);
+        super.setAsento(2);
+    }
+     
+     public void pyoraytaPalaaYksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
+        int rivi = 0;
+        int sarake = 0;
+
+        Palanen pala = palaset.get(i);
+        if (i == 0) {
+            rivi = -1;
+            sarake = 1;
+        }
+        if (i == 1) {
+            return;
+        }
+        if (i == 2) {
+            rivi = 1;
+            sarake = -1;
+        }
+        if (i == 3) {
+            rivi = -1;
+            sarake = -1;
+        }
+        if (myotaPaivaan == true) {
+            muutaKoordinaatteja(pala, rivi, sarake);
+            super.setAsento(2);
+        } else {
+            muutaKoordinaatteja(pala, rivi * (-1), sarake * (-1));
+            super.setAsento(4);
+        }
+
+    }
+     
+      public void pyorahdysKaksi(boolean myotaPaivaan) {
+        ArrayList<Palanen> palaset = super.getPalaset();
+
+        for (int i = 0; i < palaset.size(); i++) {          
+                pyoraytaPalaaKaksi(palaset, i, myotaPaivaan);
+
+        }
+        super.setPalaset(palaset);
+       
+    }
+     
+     public void pyoraytaPalaaKaksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
+        int rivi = 0;
+        int sarake = 0;
+
+        Palanen pala = palaset.get(i);
+        if (i == 0) {
+            rivi = -1;
+            sarake = -1;
+        }
+        if (i == 1) {
+            return;
+        }
+        if (i == 2) {
+            rivi = 1;
+            sarake = 1;
+        }
+        if (i == 3) {
+            rivi = 1;
+            sarake = -1;
+        }
+        if (myotaPaivaan == true) {
+            muutaKoordinaatteja(pala, rivi, sarake);
+             super.setAsento(3);
+        } else {
+            muutaKoordinaatteja(pala, rivi * (-1), sarake * (-1));
+             super.setAsento(1);
+        }
+
+    }
+
+   
 
     public boolean pyorahda(Palanen[][] tutkittavaAlue) {
         if (voinkoPyoria(tutkittavaAlue) == false) {
             return false;
         }
         toteutaPyorahdys();
-       
+
         return true;
     }
 }
