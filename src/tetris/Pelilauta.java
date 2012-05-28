@@ -15,12 +15,17 @@ public class Pelilauta {
     private Palanen pelilauta[][];
     private Nappula nappula;
     private NappulaKasa moykky;
+    private Next next;
     private int GameOverAlueenKokoRiveina = 2; //piilossa oleva alue jonne nappulat luodaan, jos nappula muuttuu möykyksi tuolla alueella peli on ohi
+    private int pisteMaara;
+    private int rivienMaara;
+    private int vaikeusTaso;
 //    private Palanen palanen;
 
     public Pelilauta(int rivi, int sarake) {
          moykky = new  NappulaKasa();
         pelilauta = new Palanen[rivi][sarake];
+        next = new Next();
         for (rivi = 0; rivi < pelilauta.length; rivi++) {
             for (sarake = 0; sarake < pelilauta[0].length; sarake++) {
 
@@ -102,10 +107,19 @@ public class Pelilauta {
     }
     public void uusiNappulaLaudalle(Nappula nappula) {
         this.nappula = nappula;
-        ArrayList<Palanen> palaset = nappula.getPalaset();
+//        ArrayList<Palanen> palaset = nappula.getPalaset();
       
 
     }
+     public void uusiNappulaNextista(Nappula nappula) {
+        Nappula seuraava = next.getNappula();
+       this.nappula = seuraava;      
+
+    }
+     
+     public void uusiNappulaNextiin(){
+         next.uusiNappulaNextiin();
+     }
 
     public void uusiNappulaKasaLaudalle(NappulaKasa moykky) {
         this.moykky = moykky;
@@ -314,4 +328,31 @@ public class Pelilauta {
         }
         return false;
     }
+
+    public void setPisteMaara(int pisteMaara) {
+        this.pisteMaara = pisteMaara;
+    }
+
+    public int getPisteMaara() {
+        return pisteMaara;
+    }
+
+    public int getRivienMaara() {
+        return rivienMaara;
+    }
+
+    public int getVaikeusTaso() {
+        return vaikeusTaso;
+    }
+
+    public void setRivienMaara(int rivienMaara) {
+        this.rivienMaara = rivienMaara;
+    }
+
+    public void setVaikeusTaso(int vaikeusTaso) {
+        this.vaikeusTaso = vaikeusTaso;
+    }
+    
+    
+    
 }

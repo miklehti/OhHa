@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import tetris.Nappula;
 import tetris.Palanen;
 import tetris.ReunaPalanen;
+import tetris.TetrisPalanen;
 
 /**
  *
@@ -15,19 +16,19 @@ import tetris.ReunaPalanen;
  */
 public class Puikula extends Nappula {
 
-    public Puikula(int montakPalasta, int x, int y) {
+    public Puikula(int x, int y) {
 
         super(4, x, y);
 
         ArrayList<Palanen> palaset = super.getPalaset();
         Palanen toka = palaset.get(1);
-        toka.setRivi(x + 1);
+        toka.setSarake(y + 1);
 
         Palanen kolmas = palaset.get(2);
-        kolmas.setRivi(x + 2);
+        kolmas.setSarake(y + 2);
 
         Palanen neljas = palaset.get(3);
-        neljas.setRivi(x + 3);
+        neljas.setSarake(y + 3);
 
         super.setPalaset(palaset);
         super.setAsento(1);
@@ -44,9 +45,15 @@ public class Puikula extends Nappula {
             if (tutkittavaAlue[1][2] instanceof ReunaPalanen || tutkittavaAlue[3][2] instanceof ReunaPalanen || tutkittavaAlue[4][2] instanceof ReunaPalanen) {
                 return false;
             }
+            if (tutkittavaAlue[1][2] instanceof TetrisPalanen || tutkittavaAlue[3][2] instanceof TetrisPalanen || tutkittavaAlue[4][2] instanceof TetrisPalanen) {
+                return false;
+            }
         }
         if (asento == 2) {
             if (tutkittavaAlue[2][1] instanceof ReunaPalanen || tutkittavaAlue[2][3] instanceof ReunaPalanen || tutkittavaAlue[2][4] instanceof ReunaPalanen) {
+                return false;
+            }
+            if (tutkittavaAlue[2][1] instanceof TetrisPalanen || tutkittavaAlue[2][3] instanceof TetrisPalanen || tutkittavaAlue[2][4] instanceof TetrisPalanen) {
                 return false;
             }
         }
@@ -67,15 +74,15 @@ public class Puikula extends Nappula {
             Palanen kolmas = palaset.get(2);
             int uusiKolmaRivi = kolmas.getRivi() + 1;
             kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() -1;
+            int uusiKolmasSarake = kolmas.getSarake() - 1;
             kolmas.setSarake(uusiKolmasSarake);
 
             Palanen neljas = palaset.get(3);
-                int uusiNeljasRivi = neljas.getRivi() + 2;
+            int uusiNeljasRivi = neljas.getRivi() + 2;
             neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() -2;
+            int uusiNeljasSarake = neljas.getSarake() - 2;
             neljas.setSarake(uusiNeljasSarake);
-         
+
             super.setPalaset(palaset);
             super.setAsento(2);
 
@@ -85,7 +92,7 @@ public class Puikula extends Nappula {
             ArrayList<Palanen> palaset = super.getPalaset();
 
             Palanen eka = palaset.get(0);
-            int uusiEkaRivi = eka.getRivi() +1;
+            int uusiEkaRivi = eka.getRivi() + 1;
             eka.setRivi(uusiEkaRivi);
             int uusiEkaSarake = eka.getSarake() - 1;
             eka.setSarake(uusiEkaSarake);
@@ -93,15 +100,15 @@ public class Puikula extends Nappula {
             Palanen kolmas = palaset.get(2);
             int uusiKolmaRivi = kolmas.getRivi() - 1;
             kolmas.setRivi(uusiKolmaRivi);
-            int uusiKolmasSarake = kolmas.getSarake() +1;
+            int uusiKolmasSarake = kolmas.getSarake() + 1;
             kolmas.setSarake(uusiKolmasSarake);
 
             Palanen neljas = palaset.get(3);
-                int uusiNeljasRivi = neljas.getRivi() - 2;
+            int uusiNeljasRivi = neljas.getRivi() - 2;
             neljas.setRivi(uusiNeljasRivi);
-            int uusiNeljasSarake = neljas.getSarake() +2;
+            int uusiNeljasSarake = neljas.getSarake() + 2;
             neljas.setSarake(uusiNeljasSarake);
-         
+
             super.setPalaset(palaset);
             super.setAsento(1);
 

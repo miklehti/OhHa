@@ -13,7 +13,7 @@ public class Kello {
     private long startTime;
 
     public Kello() {
-        startTime=0;
+        startTime=System.currentTimeMillis();
     }
 
     public void nollaaKello() {

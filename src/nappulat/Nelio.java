@@ -14,7 +14,7 @@ import tetris.Palanen;
  */
 public class Nelio extends Nappula {
 
-    public Nelio(int montakoPalaa, int x, int y) {
+    public Nelio(int x, int y) {
         
         super(4, x, y);
      ArrayList<Palanen> palaset = super.getPalaset();

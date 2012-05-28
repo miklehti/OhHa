@@ -4,6 +4,10 @@
  */
 package tetris;
 
+import java.util.ArrayList;
+import java.util.Random;
+import nappulat.*;
+
 /**
  *
  * @author HP_User
@@ -12,10 +16,10 @@ public class Next {
 
     private Palanen next[][];
     private Nappula nappula;
-
+    private ArrayList<Nappula> arvottavatNappulat;
 
     public Next() {
-    
+
         next = new Palanen[6][6];
         for (int rivi = 0; rivi < next.length; rivi++) {
             for (int sarake = 0; sarake < next[0].length; sarake++) {
@@ -25,9 +29,30 @@ public class Next {
 
             }
         }
+        Nelio nelio = new Nelio(0, 5);
+        arvottavatNappulat.add(nelio);
+
+        Puikula puikula = new Puikula(0, 4);
+        arvottavatNappulat.add(puikula);
+
+        Sininen sininen = new Sininen(0, 5);
+        arvottavatNappulat.add(sininen);
+
+        Vihrea vihrea = new Vihrea(0, 5);
+        arvottavatNappulat.add(vihrea);
+
+        SininenL sininenL = new SininenL(0, 5);
+        arvottavatNappulat.add(sininenL);
+
+        VaaleanpunainenL vaaleanpunainenL = new VaaleanpunainenL(0, 5);
+        arvottavatNappulat.add(vaaleanpunainenL);
+
+        ParasNappula parasnappula = new ParasNappula(0, 5);
+        arvottavatNappulat.add(parasnappula);
+
     }
-    
-    public void tulostaMatriisi() {
+
+    public void tulostaNext() {
         for (int rivi = 0; rivi < next.length; ++rivi) {
             for (int sarake = 0; sarake < next[rivi].length; ++sarake) {
                 int alkionArvo = 0;
@@ -46,9 +71,20 @@ public class Next {
         System.out.println("");
     }
 
-
-    public void uusiNappulaLaudalle(Nappula nappula) {
-        this.nappula = nappula;
-        
+    public Nappula arvoNappula() {
+         Random nappulanArpoja = new Random();
+        int vastaus = nappulanArpoja.nextInt(7);
+        return arvottavatNappulat.get(vastaus);
     }
+
+    public void uusiNappulaNextiin() {
+
+        this.nappula = arvoNappula();
+
+    }
+
+    public Nappula getNappula() {
+        return nappula;
+    }
+    
 }
