@@ -27,11 +27,16 @@ public class Konrolli {
     
     }
 
-
+       /**
+     * pelilooppi
+     *
+     *
+     *
+     *
+     */
 
 public void pelaa() {
             
-    while()
-    
+   
     }
 }

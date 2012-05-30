@@ -48,6 +48,16 @@ public class Sininen extends Nappula{
         super.setSade(1);
 
     }
+     
+                    /**
+     * voiko palanen pyöriä
+     *
+     *
+     *@param tutkittavaAlue tutkittava alue, 
+     
+     *@return onnaako
+     */
+     
       public boolean voinkoPyoria(Palanen[][] tutkittavaAlue) {
         int asento = super.getAsento();
         if (asento == 1) {
@@ -63,6 +73,13 @@ public class Sininen extends Nappula{
        
         return true;
     }
+      
+                     /**
+     * toteuta pyörähdys nappulatasolla
+     *
+     *
+
+     */
 
       public void toteutaPyorahdys() {
         int asento = super.getAsento();
@@ -73,7 +90,13 @@ public class Sininen extends Nappula{
             pyorahdys(false);
         }
     }
-      
+                               /**
+     * toteuta pyörähdys palastasolla
+     *
+     *@ param palaset palaset
+     * @param i mikä palanen?
+     * @param myotaPaivaan kumpaan suuntaan pyöritetään?
+     */
       
      public void pyoraytaPalaa(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
         int rivi = 0;
@@ -105,6 +128,12 @@ public class Sininen extends Nappula{
 
     }  
      
+                          /**
+     * toteuta pyörähdys ja mihin suuntaan
+     *
+     *@param myotaPaivaan kumpaan suuntaan pyöritään
+     */
+     
       public void pyorahdys(boolean myotaPaivaan) {
         ArrayList<Palanen> palaset = super.getPalaset();
 
@@ -119,6 +148,15 @@ public class Sininen extends Nappula{
    
     }
 
+      
+                 /**
+     * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
+     *
+     *
+     *@param tutkittavaAlue tutkittava alue, 
+     
+     *
+     */
     public boolean pyorahda(Palanen[][] tutkittavaAlue) {
         if (voinkoPyoria(tutkittavaAlue) == false) {
             return false;

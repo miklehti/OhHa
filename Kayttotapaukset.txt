@@ -1,0 +1,53 @@
+Tetrispelin käyttötapaukset
+
+Käyttötapaus 1: Pelaaja siirtää nappulaa oikealle/vasemmalle/alas tai pyörittää nappulaa
+Käyttäjä: pelaaja
+Tavoite: siirtää tai pyörittää nappulaa haluttuun suuntaan
+Esiehto: peli on käynnissä
+Käyttötapauksen kulku:
+1. pelaaja painaa pelin aikana nuolinäppäintä alas, ylös(pyöri),vasemmalle tai oikealle
+2. nappula siirtyy haluttuun suuntaan tai pyörii yhden pykälän verran
+Poikkeava käyttäytyminen:
+jos nappulan suunnassa minne pitää siirtyä tai pyöriä on reuna tai nappulakasan palanen tiellä, toimintoa ei suoriteta.
+
+Käyttötapaus 2: pelilauta poistaa täyden rivin
+käyttäjä:systeemi
+Tavoite: tiputtaa nappulakasaa kun täysi rivi tetrislaudalla valmistuu
+esiehto: peli on käynnissä, rivi täyttyy siten ettei yhtään aukkoa jää
+Käyttötapauksen kulku:
+1. Tetrisnappula törmää reunaan tai tetrisnappulakasaan alapuolelta päin.
+2. Nappula muuttuu ei-aktiiviseksi
+3. Kaikki (1-4) rivit missä ei yhtään nullia välissä poistetaan ja niiden yläpuolella oleva nappulakasa romahtaa poistettavien rivien verran alaspäin
+4. Rysäytettyjen rivien määrä kasvaa valmistuneiden rivien verran (1-4)
+Poikkeava käyttäytyminen:
+null välissä, ei rysäytetä.
+Käyttötapaus 3: pelilauta tiputtaa nappulaa alaspäin kun aikaa on kulunut
+käyttäjä: systeemi
+tavoite: tiputtaa nappulaa alas yhden pykälän
+Esiehto: nappula on laudalla, peli on käynnissä
+Käyttötapauksen kulku:
+1. kello ilmoittaa että aika on kulunut ja että olisi aika tiputtaa nappulaa alas. Kelloaika määräytyy vaikeustason (1-9) mukaan. Mitä vaikeampi taso sitä lyhyempi on aika.
+2. Nappulaa tiputetaan alaspäin
+Poikkeava käyttäytyminen:
+Käyttäjä on itse painanut nuolta alaspäin jolloin tetrisnappulan putoaminen kiihtyy, aika nollataan alkamaan alusta kun nappulasta on päästetty irti.
+Nappula törmää reunaan tai nappulakasaan.
+
+Käyttötapaus 4: Seuraava nappula pelilaudalle
+Käyttäjä:systeemi
+tavoite:saada seuraava nappula arvottua pelilaudalle
+Esiehto:peli on käynnissä
+Käyttötapauksen kulku:
+1. arvo nappula ja näytä se next-taulukossa ruudulla
+2. kun liikutettava nappula on kuollut, mitä näytetään nextissä tulee laudalle
+3. arvotaan uusi next
+Poikkeava käyttäytyminen.
+Peli on ohi, ei enää nextiä
+
+Käyttötapaus 5: Game over
+Käyttäjä:pelaaja
+Tavoite: lopettaa peli joskus
+Esiehto: peli on käynnissä
+Käyttötapauksen kulku:
+1. Nappulan joku palanen jää pelin game over alueelle kun nappula muuttuu ei-aktiiviseksi, eli se on törmännyt nappulakasaan ja ei voi enää liikkua alaspäin.
+Poikkeava käyttäytyminen:
+nappula voikin liikkua alaspäin.

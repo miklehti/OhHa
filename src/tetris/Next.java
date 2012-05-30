@@ -14,8 +14,17 @@ import nappulat.*;
  */
 public class Next {
 
+        /**
+     * palasista koostuva matriisi jonne seuraava nappula kuvataan
+     */
     private Palanen next[][];
+        /**
+     *mikä nappula on tulossa seuraavaksi
+     */
     private Nappula nappula;
+        /**
+     * taulukko kaikista mahdollisista nappuloista, täältä sitten arvotaan seuraava
+     */
     private ArrayList<Nappula> arvottavatNappulat;
 
     public Next() {
@@ -44,7 +53,7 @@ public class Next {
         SininenL sininenL = new SininenL(0, 5);
         arvottavatNappulat.add(sininenL);
 
-        VaaleanpunainenL vaaleanpunainenL = new VaaleanpunainenL(0, 5);
+        vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 5);
         arvottavatNappulat.add(vaaleanpunainenL);
 
         ParasNappula parasnappula = new ParasNappula(0, 5);
@@ -52,6 +61,9 @@ public class Next {
 
     }
 
+         /**
+     * käytetään apuna testauksessa
+     */
     public void tulostaNext() {
         for (int rivi = 0; rivi < next.length; ++rivi) {
             for (int sarake = 0; sarake < next[rivi].length; ++sarake) {
@@ -71,6 +83,10 @@ public class Next {
         System.out.println("");
     }
 
+        /**
+     * arpoo seuraavan nappulan
+     * @return Nappula arvottu nappula
+     */
     public Nappula arvoNappula() {
          Random nappulanArpoja = new Random();
         int vastaus = nappulanArpoja.nextInt(7);

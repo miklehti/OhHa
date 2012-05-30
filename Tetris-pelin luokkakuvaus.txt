@@ -1,0 +1,199 @@
+Projektisuunitelma ja luokkakuvaus: Tetris
+
+aihe: Tetris peli siten ett‰ se on mahdollisimman laajennettava, eli ett‰ halutessaan peli‰ voidaan pelata erikokoisilla kentill‰ ja uusia nappuloita, joita ei yleens‰ ole Tetriksess‰, voi tehd‰ lis‰‰ helposti.
+
+Toiminnallisuus:
+
+pelaaja: pelaa peli, siirr‰ nappulaa oikealle, vasemmalle, alas tai pyˆrit‰ nappulaa
+yll‰pit‰j‰: helppo lis‰t‰ uusi nappula peliin, t‰ytyy vain m‰‰ritell‰ kyseiselle nappullalle oma luokka ja miten se pyˆrii kun îpyˆriî toimintoa painetaan. Lis‰ksi uusi luokka pit‰‰ lis‰t‰ arvottavien next nappuloiden joukkoon.
+
+Luokkarakene:
+
+Ohessa lista luokista joita tarvitaan Tetriksess‰ 
+
+Luokka: Pelilauta
+ 
+Atrribuutit:
+
+    private Palanen pelilauta[][]; // tetris pelin pelilauta, kuvaa aina pelin senhetkisen tilanteen
+
+    private Nappula nappula; // pelilaudalla on kullakin hetkell‰ max yksi tetrrisnappula jota pelaaja ohjaa (alas, vasemmalle, oikealle, pyˆrit‰)
+
+    private NappulaKasa moykky; //kaikki mit‰ aiemmista nappuloista on j‰ljell‰, ei voi en‰‰ ohjata
+
+    private Next next; // mik‰ nappula on seuraavaksi tulossa?
+
+    private int GameOverAlueenKokoRiveina = 2; //pelaajalle piilossa oleva alue pelilaudalla jonne nappulat luodaan, jos nappula muuttuu mˆykyksi tuolla alueella peli on ohi
+
+    private int pisteMaara;
+
+    private int rivienMaara;// aina kun rivien m‰‰r‰ saavuttaa pyˆre‰n kymmenluvun, vaikeustaso nousee yhdell‰
+
+    private int vaikeusTaso;//1-9
+		
+Konstruktorit ja metodit:
+
+  public Pelilauta(int rivi, int sarake) //luo annetuilla parametreilla Nappula taulukon joka toimii pelilautana
+
+ public void tulostaMatriisi() //k‰ytet‰‰n apuna testauksessa, tulostaa merkein matriisin
+
+ public int pelilaudanSumma() //k‰ytet‰‰n apuna testauksessa, tulostaa merkein matriisin
+
+ public void asetaNappulanPaikkaLaudalla() //asettaa nappulan laudalle
+
+public void uusiNappulaNextista(Nappula nappula)// asettaa uuden nappulan nextiin
+
+ public boolean muutaNappulaMoykyksi()//muuttaa nappulan napppulakasaan
+
+public boolean voinkoLiikkuaAlas()//tutkii voiko nappula liikkua alas, ett‰ ei ole reuna tai nappulakasa tiell‰
+
+ public boolean voinkoLiikkuaOikealle()// tutkii voiko nappula liikkua oikealle, ett‰ ei ole reuna tai nappulakasa tiell‰
+
+ public boolean voinkoLiikkuaVasemmalle()//tutkii voiko nappula liikkua vasemmalle, ett‰ ei ole reuna tai nappulakasa tiell‰
+
+
+ public boolean tiputaNappulaaAlas()//tiputtaa nappulaa yhden verran alas, kutsuu nappulan omaa siirry alas metodia.
+
+ public boolean siirraNappullaaOikealle()//siirt‰‰ nappullaa oikealle, kutsuu nappulan omaa siirry oikealle metodia.
+
+ public boolean siirraNappullaaVasemmalle()// siirt‰‰ nappullaa oikealle, kutsuu nappulan omaa siirry vasemalle metodia.
+
+public boolean onkoRysaytettavaa()// tutkii onko rivill‰ yht‰‰n nullia, jos on niin rivi‰ ei voi rys‰ytt‰‰, jos on niin true.
+
+ public ArrayList<Integer> annaRysaytettavatRivit()//jos on rys‰ytett‰v‰‰ niin otetaan niiden rivit ylˆs
+
+ public void rysayta(ArrayList<Integer> rysaytettavat)//mitk‰ rivit rys‰ytet‰‰n, eli niiden yl‰puolella olevaa nappulakasan palasien rivi‰ lis‰t‰‰n yhdell‰ per rivi jota rys‰ytet‰‰n.
+
+public Palanen[][] annaTutkittavaAlue()// pyˆr‰ytyst‰ varten pit‰‰ antaa pelilaudalta tietoja ett‰ sopiiko nappula pyˆrim‰‰n. Tutkittavan alueen koko riippuu nappulan s‰teest‰, esim. jos s‰de 1 => annetaan 3x3 alue jossa keskipisteen‰ on nappulan keskipiste (eli siis mink‰ palasen suhteen nappula pyˆrii ymp‰ri) tai jos s‰de 2 niin 5x alue jne.
+
+ public boolean pyoritaNappulaa()//pyˆrit‰ nappulaa, kutsutaan nappulan omaa pyˆri metodia.
+
+public void muutaNappulaKuolleeksi()// nappula osunut reunaan tai nappulakasaan, muutetaan kuolleeksi kutsumalla nappulan omaa boolean metodia.
+
+public boolean onkoPeliOhi()//jos nappula muuttuu kuolleksi ja joku nappulan palanen on game-over alueella. Normaalissa tetriksess‰ se on kaksi ekaa rivi‰ pelilaudalta, mutta t‰t‰ voi muuttaa haluttaessa.
+
+Yleist‰ luokasta:
+pelilauta komentaa nappulaa siirtym‰‰n oikealle, vasemmalle, alas. Pelilauta myˆs tutkii onko kyseinen siirto mahdollista. N‰iss‰ operaatioissa pelilauta k‰ytt‰‰ apunaan myˆs nappulan ja palasen metodeja.
+Pelilauta muuttaa ei-aktiivisen nappulan nappulakasaksi
+Pelilauta k‰skee nexti‰ ottamaan uusi seuraava nappula ja antamaan nyt nextiss‰ oleva nappula pelilaudalle.
+Pelilaudalla on pistetilanne, rivien m‰‰r‰ ja vaikuestaso
+pelilauta tutkii onko peli ohi
+pelilauta tutkii onko rys‰ytett‰v‰‰ pelilaudalla
+jos rys‰ytett‰v‰‰ on pelilauta rys‰ytt‰‰ mˆykky‰ pienemm‰ksi
+
+Luokka: Nappula
+
+abstrakti yli-luokka kaikille pelinappuloille
+
+attribuutit:
+
+    private boolean onkoNappulaElossa;//voiko nappulaa en‰‰ siirt‰‰
+    private int vari; //nappulan v‰ri
+
+    private int asento; //miss‰ asennossa nappula on 1-4 riippuen nappulasta
+
+    private ArrayList<Palanen> palaset = new ArrayList<Palanen>(); // lista nappulan palasista, perustetriksess‰ 4.
+
+    private Palanen keskipiste; //mik‰ palanen on keskipiste, eli mink‰ palasen suhteen pyˆrit‰‰n ymp‰ri
+    private int sade; //kuinka paljon tilaa nappula tarvitsee pyˆri‰kseen ymp‰ri, perusnappulalle 1, paitsi puikulalle 2.
+
+    private int aloituskorkeus; //k‰ytet‰‰n game over alueen laskentaan
+
+metodit:
+
+public void liikuAlas/liikuOikealle/liikuVasemmalle()//siirt‰‰ nappulan jokaista palasta oikeaan suuntaan yhden yksikˆ‰n verran.
+
+public void muutaKoordinaatteja// pyˆrimist‰ varten, muuttaa nappulan palasten koordinaatteja kun nappula pyˆrii
+
+public abstract boolean pyorahda(Palanen[][] tutkittavaAlue) // jokaiselle aliluokan tulee toteuttaa oma pyˆrimisens‰
+
+yleist‰ luokasta:
+tutkii onko nappula elossa
+liikuttaa nappulan koordinaatteja oikealle, alas, vasemmalle
+muuttaa koordinaatteja
+kaikki oheiset metodit ovat samoja kaikille nappuloille
+muuttaa ekan nelj‰n palasen tietoja => jos palasia enemm‰n/v‰hemm‰n ne pit‰‰ ottaa huomioon aliluokassa. Default nappulan koko siis 4, niin kuin oikeassa Tetriksess‰, mutta mik‰‰n ei est‰ ohjelmoimasta erikokoisia nappuloita
+Aliluokassa tulee sitten m‰‰ritell‰ miten nappula pyˆrii, t‰m‰ on ainoa toiminnallisuus mik‰ on eri jokaiselle nappulalle ja t‰ten t‰m‰ metodi tullaan j‰tt‰m‰‰n abstraktiksi.
+
+
+Nappulan aliluokat:
+Luokka: Nelio
+Luokka: Sininen
+Luokka: Vihrea
+Luokka:SininenL
+Luokka:VaaleanpunainenL
+Luokka: Nelio
+Luokka: Puikula
+Eri nappulat t‰ss‰ peliss‰
+Joka nappulalle on oma pyˆr‰hdysmetodinsa
+
+Luokka: Palanen
+ 
+Yliluokka TetrisPalaselle ja ReunaPalaselle
+nappula koostuu 1-* palasesta. Perus Tetriksess‰ jokaisella nappulalla on nelj‰ palasta. T‰ss‰ niit‰ voi periaatteessa olla enemm‰nkin.
+Palasella on koordinaatit pelilaudalla (attribuutit)
+Attribuutit rivi ja sarake, metodit getterit ja setterit.
+
+Luokka:TetrisPalanen
+nappula koostuu 1-* tetrispalasesta. Perus Tetriksess‰ jokaisella nappulalla on nelj‰ palasta. T‰ss‰ niit‰ voi periaatteessa olla enemm‰nkin.
+
+Luokka: ReunaPalanen
+Tetriksen reuna jota nappula ei saa ylitt‰‰
+
+Luokka: Nappulakasa
+     
+Nappulakasa ovat ne edelliset nappulat jotka ovat muuttuneet ohjaamattomiksi.
+Nappulakasa lis‰‰ nappulan palaset itseens‰
+Nappulakasa voi tiputtaa annettuja rivej‰ itse‰‰n jos pelilauta niin k‰skee
+
+metodit:
+
+ public void lisaaPalanenMoykkyyn(Nappula nappula)//lis‰‰ nappulan kasaan
+
+public void tiputaMoykkya(int i)//rys‰ytt‰‰ kasaa jos rivi on t‰ynn‰
+
+Luokka: Kontrolli
+ 
+T‰nne tulee pelin kulku logiikka eli pelilooppi.
+Kontrolli siis k‰skytt‰‰ pelilautaa mit‰ sen pit‰‰ tehd‰
+Kontrolli k‰ytt‰‰ Kelloa k‰skytt‰miseen
+
+Luokka: Next
+
+attribuutit:
+    private Palanen next[][];// palasista koostuva matriisi jonne seuraava nappula kuvataan
+    private Nappula nappula;// mik‰ nappula on tulossa seuraavaksi
+    private ArrayList<Nappula> arvottavatNappulat;//taulukko kaikista mahdollisista nappuloista, t‰‰lt‰ sitten arvotaan seuraava
+
+metodit:
+
+public void tulostaNext()//k‰ytet‰‰n apuna testauksessa
+
+ public Nappula arvoNappula()// arpoo seuraavan nappulan
+
+Nappula-taulukko joka kertoo mik‰ nappula on seuraavaksi tulossa
+
+Luokka: Kello
+
+kertoo kauanko on aikaa kunnes nappulaa taas tiputetaan pelilaudalla
+
+ public void nollaaKello() // muuttaa ajan kyseiseksi ajaksi
+
+ public long paljonkoOnKulunut() // palauttaa paljonko kulunut viime nollauksesta, riippuen sitten pelin vaikeustasosta kontrolli luokka k‰skee yh‰ nopeammin tiputtamaan nappulaa.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+ 

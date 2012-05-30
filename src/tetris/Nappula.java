@@ -12,14 +12,33 @@ import java.util.ArrayList;
  */
 public abstract class Nappula {
 
+    /**
+     * voiko nappulaa enää siirtää
+     */
     private boolean onkoNappulaElossa;
+    /**
+     * nappulan väri
+     */
     private int vari;
-    private int korkeus;
-    private int leveys;
+    /**
+     * missä asennossa nappula on 1-4 
+     */
     private int asento;
+    /**
+     * lista nappulan palasista, perustetriksessä 4.
+     */
     private ArrayList<Palanen> palaset = new ArrayList<Palanen>();
+    /**
+     * mikä palanen on keskipiste, eli minkä palasen suhteen pyöritään ympäri
+     */
     private Palanen keskipiste;
+    /**
+     *kuinka paljon tilaa nappula tarvitsee pyöriäkseen ympäri, perusnappulalle 1, paitsi puikulalle 2.
+     */
     private int sade;
+    /**
+     * käytetään game over alueen laskentaan
+     */
     private int aloituskorkeus; //käytetään game over alueen laskentaan
 
     public Nappula(int montakoPalasta, int x, int y) {
@@ -105,25 +124,12 @@ public abstract class Nappula {
         return asento;
     }
 
-    public int getKorkeus() {
-        return korkeus;
-    }
 
-    public int getLeveys() {
-        return leveys;
-    }
 
     public void setAsento(int asento) {
         this.asento = asento;
     }
 
-    public void setLeveys(int leveys) {
-        this.leveys = leveys;
-    }
-
-    public void setKorkeus(int korkeus) {
-        this.korkeus = korkeus;
-    }
 
     
 
@@ -132,7 +138,13 @@ public abstract class Nappula {
     }
 
    
-
+    /**
+     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
+     *
+     *
+     *
+     *
+     */
     public void liikuAlas() {
         
         for(int i = 0; i<palaset.size();i++){
@@ -142,6 +154,14 @@ public abstract class Nappula {
         }
         
     }
+    
+       /**
+     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
+     *
+     *
+     *
+     *
+     */
 
     public void liikuOikealle() {
         
@@ -153,6 +173,14 @@ public abstract class Nappula {
         
     }
 
+       /**
+     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
+     *
+     *
+     *
+     *
+     */
+    
     public void liikuVasemmalle() {
          for(int i = 0; i<palaset.size();i++){
             Palanen tutkittava = palaset.get(i);
@@ -161,6 +189,13 @@ public abstract class Nappula {
         }
     }
 
+       /**
+     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
+     *
+     *
+     *@param onkoNappulaElossa kertoo onko nappula hengissä
+     *
+     */
     public void setOnkoNappulaElossa(boolean onkoNappulaElossa) {
         this.onkoNappulaElossa = onkoNappulaElossa;
     }
@@ -169,12 +204,30 @@ public abstract class Nappula {
         return onkoNappulaElossa;
     }
     
+       /**
+     * pyörimistä varten, muuttaa nappulan palasten koordinaatteja kun nappula pyörii
+     *
+     *
+     *@param pala muutettava palanen, 
+     *@param rivi on uusi rivi, 
+     * @sarake sarake on uusi sarake
+     *
+     */
     public void muutaKoordinaatteja(Palanen pala, int rivi, int sarake) {
         int uusiEkaRivi = pala.getRivi() + rivi;
         pala.setRivi(uusiEkaRivi);
         int uusiEkaSarake = pala.getSarake() + sarake;
         pala.setSarake(uusiEkaSarake);
     }
+    
+           /**
+     * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
+     *
+     *
+     *@param tutkittavaAlue tutkittava alue, 
+     
+     *
+     */
 
     public abstract boolean pyorahda(Palanen[][] tutkittavaAlue);
 }

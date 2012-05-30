@@ -47,6 +47,15 @@ public class Nelio extends Nappula {
         super.setKeskipiste(super.getPalanen(1));
         super.setSade(0);
     }
+    
+               /**
+     * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
+     *
+     *
+     *@param tutkittavaAlue tutkittava alue, 
+     
+     *
+     */
 
     public boolean pyorahda(Palanen[][]  tutkittavaAlue) {
         return false;

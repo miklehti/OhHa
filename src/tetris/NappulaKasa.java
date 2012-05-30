@@ -22,6 +22,15 @@ public class NappulaKasa {
         return palaset;
     }
 
+    
+        /**
+     * lisää nappulan kasaan
+     *
+     *
+     *@param nappula lisättävä nappula
+     *
+     */
+    
     public void lisaaPalanenMoykkyyn(Nappula nappula) {
         ArrayList<Palanen> nappulanPalat= nappula.getPalaset();
         for(int i = 0; i<nappulanPalat.size();i++){
@@ -31,6 +40,14 @@ public class NappulaKasa {
 
     }
 
+          /**
+     * lisää nappulan kasaan
+     *
+     *
+     *@param i rivi jolta tiputettava
+     *
+     */
+    
     public void tiputaMoykkya(int i) {
         for (int j = 0; j < palaset.size(); j++) {
             if (palaset.get(j).getRivi() == i) {
