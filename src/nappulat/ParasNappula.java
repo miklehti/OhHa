@@ -130,7 +130,7 @@ public class ParasNappula extends Nappula {
 
         }
         super.setPalaset(palaset);
-        super.setAsento(2);
+//        super.setAsento(2);
     }
      
                            /**
@@ -216,12 +216,12 @@ public class ParasNappula extends Nappula {
             rivi = 1;
             sarake = -1;
         }
-        if (myotaPaivaan == true) {
+        if (myotaPaivaan == false) {
             muutaKoordinaatteja(pala, rivi, sarake);
-             super.setAsento(3);
+             super.setAsento(1);
         } else {
             muutaKoordinaatteja(pala, rivi * (-1), sarake * (-1));
-             super.setAsento(1);
+             super.setAsento(3);
         }
 
     }

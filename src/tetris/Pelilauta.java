@@ -92,7 +92,8 @@ public class Pelilauta {
      *
      *
      */
-    public void tulostaMatriisi() {
+    public void tulostaMatriisi(String otsikko) {
+        System.out.println(otsikko);
         for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
             for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
                 int alkionArvo = 0;
@@ -443,14 +444,14 @@ public class Pelilauta {
         int sarake = keskipiste.getSarake() - nappula.getSade();
         for (int i = 0; i < 2 * nappula.getSade() + 1; i++) {
             for (int j = 0; j < 2 * nappula.getSade() + 1; j++) {
-                if (rivi < 0 || sarake < 0 || sarake == 0) {
+                if (rivi+i < 0 || sarake+j <=0) {
                     Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
-                    tutkittavaAlue[rivi][sarake] = reunapalanen;
-                } else if (rivi == pelilauta.length - 1 || sarake == pelilauta[0].length - 1) {
+                    tutkittavaAlue[i][j] = reunapalanen;
+                } else if (rivi+i >= pelilauta.length - 1 || sarake+j >= pelilauta[0].length - 1) {
                     Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
-                    tutkittavaAlue[rivi][sarake] = reunapalanen;
+                    tutkittavaAlue[i][j] = reunapalanen;
                 } else {
-                    tutkittavaAlue[rivi][sarake] = null;
+                    tutkittavaAlue[i][j] = pelilauta[rivi+i][sarake+j];
                 }
 
             }
@@ -529,4 +530,113 @@ public class Pelilauta {
     public void setVaikeusTaso(int vaikeusTaso) {
         this.vaikeusTaso = vaikeusTaso;
     }
+    
+            /**
+     * montako kertaa siirretään nappulaa, tulostetaanko välitulos? Lopullisessa pelissä aina false
+     *
+     *
+     *@param montakoKertaa montako kertaa toteutetaan
+     *@param tulostetaanko true niin välitulokset
+     */
+   public boolean siirraNappulaaOikealle(int montakoKertaa, boolean tulostetaanko) {
+        boolean onnistuiko = true;
+         
+        for (int i = 0; i < montakoKertaa; i++) {
+            if (tulostetaanko == true) {
+               tulostaMatriisi("siirraNappulaaOikealle");
+            }
+          poistaNappulaNakyvista();
+          onnistuiko= siirraNappullaaOikealle();
+           asetaNappulanPaikkaLaudalla();
+           
+        }
+         if (tulostetaanko == true) {
+               tulostaMatriisi("Lopputuolus:siirraNappulaaOikealle");
+            }
+        return onnistuiko;
+    }
+
+            /**
+     * montako kertaa siirretään nappulaa, tulostetaanko välitulos? Lopullisessa pelissä aina false
+     *
+     *
+     *@param montakoKertaa montako kertaa toteutetaan
+     *@param tulostetaanko true niin välitulokset
+     */
+    
+      public boolean siirraNappulaaVasemmalle(int montakoKertaa, boolean tulostetaanko) {
+            boolean onnistuiko = true;
+            
+        for (int i = 0; i < montakoKertaa; i++) {
+             if (tulostetaanko == true) {
+                tulostaMatriisi("siirraNappulaaVasemmalle");
+            }
+           poistaNappulaNakyvista();
+           onnistuiko=  siirraNappullaaVasemmalle();
+           asetaNappulanPaikkaLaudalla();
+           
+        }
+         if (tulostetaanko == true) {
+                tulostaMatriisi("Lopputulos:siirraNappulaaVasemmalle");
+            }
+          return onnistuiko;
+    }
+
+            /**
+     * montako kertaa siirretään nappulaa, tulostetaanko välitulos? Lopullisessa pelissä aina false
+     *
+     *
+     *@param montakoKertaa montako kertaa toteutetaan
+     *@param tulostetaanko true niin välitulokset
+     */
+    
+   
+            public boolean siirraNappulaaAlas(int montakoKertaa, boolean tulostetaanko) {
+                 boolean onnistuiko = true;
+                
+        for (int i = 0; i < montakoKertaa; i++) {
+             if (tulostetaanko == true) {
+                tulostaMatriisi("siirraNappulaaAlas");
+            }
+            poistaNappulaNakyvista();
+           onnistuiko=tiputaNappulaaAlas();
+            asetaNappulanPaikkaLaudalla();
+            
+        }
+              if (tulostetaanko == true) {
+                tulostaMatriisi("Lopputulos:siirraNappulaaAlas");
+            }
+        return onnistuiko;
+    }
+
+            /**
+     * montako kertaa siirretään nappulaa, tulostetaanko välitulos? Lopullisessa pelissä aina false
+     *
+     *
+     *@param montakoKertaa montako kertaa toteutetaan
+     *@param tulostetaanko true niin välitulokset
+     */
+    
+   
+                public boolean pyoritaNappulaa(int montakoKertaa, boolean tulostetaanko) {
+                     boolean onnistuiko = true;
+                     
+        for (int i = 0; i < montakoKertaa; i++) {
+             if (tulostetaanko == true) {
+                tulostaMatriisi("pyoritaNappulaa");
+            }
+           poistaNappulaNakyvista();
+           onnistuiko=pyoritaNappulaa();
+           asetaNappulanPaikkaLaudalla();
+           
+        }
+             if (tulostetaanko == true) {
+                tulostaMatriisi("Lopputulos:pyoritaNappulaa");
+            }
+        return onnistuiko;
+    }
+         public void uusiNappulaLaudalleNakyviin(Nappula nappula){
+              uusiNappulaLaudalle(nappula);
+        asetaNappulanPaikkaLaudalla();
+         }       
 }

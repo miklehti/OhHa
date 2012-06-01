@@ -36,8 +36,8 @@ public class Sininen extends Nappula{
                 sarake = -1;
             }
             if (i == 3) {
-                rivi = -1;
-                sarake = +2;
+                rivi = +1;
+                sarake = 0;
             }
             muutaKoordinaatteja(pala, rivi, sarake);
         }        
@@ -104,19 +104,19 @@ public class Sininen extends Nappula{
 
         Palanen pala = palaset.get(i);
         if (i == 0) {
-            rivi = 1;
-            sarake = 1;
+            rivi = 0;
+            sarake = 0;
         }
         if (i == 1) {
             return;
         }
         if (i == 2) {
-            rivi = 1;
-            sarake = -1;
+            rivi = 0;
+            sarake = 2;
         }
         if (i == 3) {
-            rivi = 0;
-            sarake = -2;
+            rivi = -2;
+            sarake = 0;
         }
         if (myotaPaivaan == true) {
             muutaKoordinaatteja(pala, rivi, sarake);

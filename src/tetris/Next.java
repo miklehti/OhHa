@@ -38,6 +38,8 @@ public class Next {
 
             }
         }
+        
+        arvottavatNappulat = new ArrayList<Nappula>();
         Nelio nelio = new Nelio(0, 5);
         arvottavatNappulat.add(nelio);
 

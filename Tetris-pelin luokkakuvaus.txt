@@ -37,7 +37,7 @@ Konstruktorit ja metodit:
 
  public void tulostaMatriisi() //k‰ytet‰‰n apuna testauksessa, tulostaa merkein matriisin
 
- public int pelilaudanSumma() //k‰ytet‰‰n apuna testauksessa, tulostaa merkein matriisin
+ public int pelilaudanSumma() //k‰ytet‰‰n apuna testauksessa, tulostaa matriisin summan
 
  public void asetaNappulanPaikkaLaudalla() //asettaa nappulan laudalle
 

@@ -24,19 +24,19 @@ public class Konrolli {
     public Konrolli() {
         pelilauta = new Pelilauta(20, 10);
         Kello kello = new Kello();
-    
+
     }
 
-       /**
+    /**
      * pelilooppi
      *
      *
      *
      *
      */
-
-public void pelaa() {
-            
-   
+    public void pelaa() {
     }
+
+    
+
 }
