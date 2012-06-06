@@ -49,9 +49,11 @@ public class NappulaKasa {
      */
     
     public void tiputaMoykkya(int i) {
+        
         for (int j = 0; j < palaset.size(); j++) {
             if (palaset.get(j).getRivi() == i) {
-                palaset.remove(new Integer(j));
+                palaset.remove(j);
+                j=j-1;
             }
 
         }

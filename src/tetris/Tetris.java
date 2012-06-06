@@ -17,6 +17,11 @@ public class Tetris {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Konrolli kontrolli = new Konrolli();
+        kontrolli.pelaa();
+        //        Pelilauta pelilauta = new Pelilauta(23, 12);
+//        Graphics gra = new Graphics();
+//        gra.paivitaTetrisPaneeli(pelilauta);
         // TODO code application logic here
 //        Nelio nelio = new Nelio(0,5);
 //        Puikula puikula = new Puikula(0,4);
@@ -50,6 +55,6 @@ public class Tetris {
 //       pelilauta.muutaNappulaMoykyksi();
 //       pelilauta.asetaMoykynPalasetKolmosiksi();
 //        pelilauta.tulostaMatriisi();
-        System.out.println("hello world");
+ //       System.out.println("hello world");
     }
 }

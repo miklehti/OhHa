@@ -62,7 +62,7 @@ public class Vihrea extends Nappula{
       public boolean voinkoPyoria(Palanen[][] tutkittavaAlue) {
         int asento = super.getAsento();
         if (asento == 1) {
-            if (tutkittavaAlue[0][4] instanceof Palanen ||tutkittavaAlue[1][2] instanceof Palanen) {
+            if (tutkittavaAlue[0][2] instanceof Palanen ||tutkittavaAlue[1][2] instanceof Palanen) {
                 return false;
             }
            
@@ -119,8 +119,8 @@ public class Vihrea extends Nappula{
             sarake = 0;
         }
         if (i == 3) {
-            rivi = 0;
-            sarake = -1;
+            rivi = -1;
+            sarake = 0;
         }
         if (myotaPaivaan == true) {
             muutaKoordinaatteja(pala, rivi, sarake);

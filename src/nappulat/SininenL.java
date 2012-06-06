@@ -22,20 +22,20 @@ public class SininenL extends Nappula {
         ArrayList<Palanen> palaset = super.getPalaset();
         for (int i = 1; i < palaset.size(); i++) {
             int rivi = 0;
-            int sarake = -1;
+            int sarake = 0;
 
             Palanen pala = palaset.get(i);
             if (i == 1) {
                 rivi = 0;
-                sarake = -2;
+                sarake = -1;
             }
             if (i == 2) {
-                rivi = 1;
+                rivi = 0;
                 sarake = -2;
             }
             if (i == 3) {
                 rivi = 1;
-                sarake = 1;
+                sarake = -2;
             }
             muutaKoordinaatteja(pala, rivi, sarake);
         }
@@ -129,7 +129,7 @@ public class SininenL extends Nappula {
 
         }
         super.setPalaset(palaset);
-        super.setAsento(2);
+       // super.setAsento(2);
     }
       
                                      /**

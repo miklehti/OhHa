@@ -80,7 +80,7 @@ public class vaaleanpunainenL extends Nappula{
            
         }
         if (asento == 4) {
-            if (tutkittavaAlue[1][0] instanceof ReunaPalanen || tutkittavaAlue[2][2] instanceof ReunaPalanen || tutkittavaAlue[1][2] instanceof ReunaPalanen) {
+            if (tutkittavaAlue[1][0] instanceof Palanen || tutkittavaAlue[2][2] instanceof Palanen || tutkittavaAlue[1][2] instanceof Palanen) {
                 return false;
             }
            
@@ -131,7 +131,7 @@ public class vaaleanpunainenL extends Nappula{
 
         }
         super.setPalaset(palaset);
-        super.setAsento(2);
+       
     }
      
                                            /**
@@ -205,18 +205,18 @@ public class vaaleanpunainenL extends Nappula{
 
         Palanen pala = palaset.get(i);
         if (i == 0) {
-            rivi = -1;
-            sarake = -1;
+            rivi = 1;
+            sarake = 1;
         }
         if (i == 1) {
             return;
         }
         if (i == 2) {
-            rivi = 1;
-            sarake = 1;
+            rivi = -1;
+            sarake = -1;
         }
         if (i == 3) {
-            rivi = 2;
+            rivi = -2;
             sarake = 0;
         }
         if (myotaPaivaan == true) {

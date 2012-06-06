@@ -29,7 +29,7 @@ public class Next {
 
     public Next() {
 
-        next = new Palanen[6][6];
+        next = new Palanen[5][5];
         for (int rivi = 0; rivi < next.length; rivi++) {
             for (int sarake = 0; sarake < next[0].length; sarake++) {
 
@@ -37,30 +37,12 @@ public class Next {
 
 
             }
+       
         }
         
-        arvottavatNappulat = new ArrayList<Nappula>();
-        Nelio nelio = new Nelio(0, 5);
-        arvottavatNappulat.add(nelio);
-
-        Puikula puikula = new Puikula(0, 4);
-        arvottavatNappulat.add(puikula);
-
-        Sininen sininen = new Sininen(0, 5);
-        arvottavatNappulat.add(sininen);
-
-        Vihrea vihrea = new Vihrea(0, 5);
-        arvottavatNappulat.add(vihrea);
-
-        SininenL sininenL = new SininenL(0, 5);
-        arvottavatNappulat.add(sininenL);
-
-        vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 5);
-        arvottavatNappulat.add(vaaleanpunainenL);
-
-        ParasNappula parasnappula = new ParasNappula(0, 5);
-        arvottavatNappulat.add(parasnappula);
-
+        
+       
+             uusiNappulaNextiin();
     }
 
          /**
@@ -90,19 +72,74 @@ public class Next {
      * @return Nappula arvottu nappula
      */
     public Nappula arvoNappula() {
+         arvottavatNappulat = new ArrayList<Nappula>();
+        Nelio nelio = new Nelio(0, 5);
+        arvottavatNappulat.add(nelio);
+
+        Puikula puikula = new Puikula(0, 4);
+        arvottavatNappulat.add(puikula);
+
+        Sininen sininen = new Sininen(0, 5);
+        arvottavatNappulat.add(sininen);
+
+        Vihrea vihrea = new Vihrea(0, 4);
+        arvottavatNappulat.add(vihrea);
+
+        SininenL sininenL = new SininenL(0, 7);
+        arvottavatNappulat.add(sininenL);
+
+        vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 4);
+        arvottavatNappulat.add(vaaleanpunainenL);
+
+        ParasNappula parasnappula = new ParasNappula(0, 4);
+        arvottavatNappulat.add(parasnappula);
+
          Random nappulanArpoja = new Random();
         int vastaus = nappulanArpoja.nextInt(7);
-        return arvottavatNappulat.get(vastaus);
+      
+       
+        return   arvottavatNappulat.get(vastaus) ;
+    }
+    
+    public void tyhjennaNexti(){
+         for (int rivi = 0; rivi < next.length; rivi++) {
+            for (int sarake = 0; sarake < next[0].length; sarake++) {
+
+                next[rivi][sarake] = null;
+
+
+            }
+       
+        }
     }
 
     public void uusiNappulaNextiin() {
 
         this.nappula = arvoNappula();
+    
+        tyhjennaNexti();
+        asetaNappulanPaikkaNextiin();
 
+    }
+    
+    public void asetaNappulanPaikkaNextiin() {
+        ArrayList<Palanen> palaset = nappula.getPalaset();
+        for (int i = 0; i < palaset.size(); i++) {
+            Palanen palanen = palaset.get(i);
+            int rivinNumero = palanen.getRivi()+1;
+            int sarakeNumero = palanen.getSarake()-3;
+//            System.out.println("rivi" + rivinNumero);
+//            System.out.println("sarake" + sarakeNumero);
+            next[rivinNumero][sarakeNumero] = palanen;
+        }
     }
 
     public Nappula getNappula() {
         return nappula;
+    }
+
+    public void setNappula(Nappula nappula) {
+        this.nappula = nappula;
     }
     
 }

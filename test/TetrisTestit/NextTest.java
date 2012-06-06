@@ -4,22 +4,18 @@
  */
 package TetrisTestit;
 
+import nappulat.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import nappulat.Nelio;
-import tetris.Pelilauta;
-import tetris.Palanen;
-import tetris.*;
-import nappulat.*;
+import tetris.Next;
 
 /**
  *
- * @author HP_User
+ * @author lehtimik
  */
 public class NextTest {
 
-    Pelilauta pelilauta;
-   
+    Next next;
 
     public NextTest() {
     }
@@ -34,8 +30,7 @@ public class NextTest {
 
     @Before
     public void setUp() {
-        pelilauta = new Pelilauta(23, 12);
-       
+        next = new Next();
     }
 
     @After
@@ -44,25 +39,111 @@ public class NextTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
+    // @Test
+    // public void hello() {}
 
     @Test
-    public void uusiaNappulaPelilaudalle() {
-        Nelio nelio = new Nelio(4, 0, 5);
-        pelilauta.uusiNappulaLaudalle(nelio);
-        pelilauta.asetaNappulanPaikkaLaudalla();
-        boolean onnistuiko;
-        Palanen tutkittava = pelilauta.annaPelilaudanAlkio(0, 5);
-//        System.out.println("uusiaNappulaPelilaudalle");
-//        pelilauta.tulostaMatriisi();
-        if (tutkittava instanceof tetris.TetrisPalanen) {
-            onnistuiko = true;
-        } else {
-            onnistuiko = false;
-        }
+    public void nextLuonti() {
 
-        assertEquals(true,
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
                 onnistuiko);
     }
 
+    @Test
+    public void nextLuonti2() {
+        next.tulostaNext();
+        next.uusiNappulaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
     }
+
+    @Test
+    public void asetaNappulanPaikkaNextiin1() {
+        Nelio nelio = new Nelio(0, 5);
+        next.setNappula(nelio);
+        next.tyhjennaNexti();
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+    @Test
+    public void asetaNappulanPaikkaNextiin2() {
+        Puikula puikula = new Puikula(0, 4);
+        next.tyhjennaNexti();
+        next.setNappula(puikula);
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+    @Test
+    public void asetaNappulanPaikkaNextiin3() {
+        Sininen sininen = new Sininen(0, 5);
+        next.tyhjennaNexti();
+        next.setNappula(sininen);
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+       @Test
+    public void asetaNappulanPaikkaNextiin4() {
+        Vihrea vihrea = new Vihrea(0, 4);
+        next.tyhjennaNexti();
+        next.setNappula(vihrea);
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+          @Test
+    public void asetaNappulanPaikkaNextiin5() {
+        SininenL sininenL = new SininenL(0, 7);
+        next.setNappula(sininenL);
+        next.tyhjennaNexti();
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+             @Test
+    public void asetaNappulanPaikkaNextiin6() {
+        vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 4);
+        next.setNappula(vaaleanpunainenL);
+        next.tyhjennaNexti();
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+
+                @Test
+    public void asetaNappulanPaikkaNextiin7() {
+        ParasNappula parasnappula = new ParasNappula(0, 4);
+        next.setNappula(parasnappula);
+        next.tyhjennaNexti();
+        next.asetaNappulanPaikkaNextiin();
+        next.tulostaNext();
+        boolean onnistuiko = false;
+        assertFalse(
+                onnistuiko);
+    }
+                
+
 }
