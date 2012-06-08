@@ -4,6 +4,7 @@
  */
 package nappulat;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import tetris.Nappula;
 import tetris.Palanen;
@@ -17,15 +18,17 @@ public class Nelio extends Nappula {
     public Nelio(int x, int y) {
         
         super(4, x, y);
-        
+     
         
         ArrayList<Palanen> palaset = super.getPalaset();
-
-        for (int i = 1; i < palaset.size(); i++) {
+        
+        for (int i = 0; i < palaset.size(); i++) {
             int rivi = 0;
             int sarake = 0;
 
             Palanen pala = palaset.get(i);
+          
+             
             if (i == 1) {
                 rivi = 1;
                 sarake = 0;
@@ -38,6 +41,7 @@ public class Nelio extends Nappula {
                 rivi = 1;
                 sarake = 1;
             }
+            pala.setVari(Color.BLUE);
             muutaKoordinaatteja(pala, rivi, sarake);
         }          
      super.setPalaset(palaset);

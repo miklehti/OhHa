@@ -553,8 +553,8 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
     public void pyoraytaSininen() {
         Sininen sininen = new Sininen(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(sininen);
-        pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(2, false);
+        pelilauta.siirraNappulaaAlas(3, true);
+        boolean onnistuiko = pelilauta.pyoritaNappulaa(2, true);
         assertTrue(
                 onnistuiko);
     }
@@ -595,16 +595,16 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaNextiin();
         pelilauta.tulostaMatriisi("nextistä");
         pelilauta.update();
-        pelilauta.siirraNappulaaAlas(2, true);
+        pelilauta.siirraNappulaaAlas(2, false);
 
         while (true) {
             Nappula nappula = pelilauta.getNappula();
             if (nappula.isNappulaElossa() == false) {
                 break;
             }
-             pelilauta.siirraNappulaaVasemmalle(1, true);
+             pelilauta.siirraNappulaaVasemmalle(1, false);
             pelilauta.update();
-            pelilauta.siirraNappulaaAlas(1, true);
+            pelilauta.siirraNappulaaAlas(1, false);
             pelilauta.update();
            
         }

@@ -19,42 +19,6 @@ public class Tetris {
     public static void main(String[] args) {
         Konrolli kontrolli = new Konrolli();
         kontrolli.pelaa();
-        //        Pelilauta pelilauta = new Pelilauta(23, 12);
-//        Graphics gra = new Graphics();
-//        gra.paivitaTetrisPaneeli(pelilauta);
-        // TODO code application logic here
-//        Nelio nelio = new Nelio(0,5);
-//        Puikula puikula = new Puikula(0,4);
-//        Pelilauta pelilauta = new Pelilauta(23,12);
-//        pelilauta.tulostaMatriisi();
-//        pelilauta.uusiNappulaLaudalle(nelio);
-//        pelilauta.asetaNappulanPaikkaLaudallaYkkoseksi();
-//        pelilauta.tulostaMatriisi();
-//
-////        for(int i = 0; i<20;i++){
-////        pelilauta.tiputaNappulaaAlas();
-////        pelilauta.tulostaMatriisi();
-////        }
-//
-//        for (int i = 0; i < 10; i++) {
-//            pelilauta.siirraNappullaaOikealle();
-//            pelilauta.tulostaMatriisi();
-//        }
-//
-//        for (int i = 0; i < 10; i++) {
-//            pelilauta.siirraNappullaaVasemmalle();
-//            pelilauta.tulostaMatriisi();
-//        }
-//        
-//                for(int i = 0; i<25;i++){
-//        pelilauta.tiputaNappulaaAlas();
-//        pelilauta.tulostaMatriisi();
-//        }
-//                NappulaKasa moykky = new NappulaKasa();
-//       pelilauta.uusiMoykkyLaudalle(moykky);
-//       pelilauta.muutaNappulaMoykyksi();
-//       pelilauta.asetaMoykynPalasetKolmosiksi();
-//        pelilauta.tulostaMatriisi();
- //       System.out.println("hello world");
+
     }
 }

@@ -9,7 +9,7 @@ import tetris.Nappula;
 import tetris.Palanen;
 import tetris.ReunaPalanen;
 import tetris.TetrisPalanen;
-
+import java.awt.Color;
 /**
  *
  * @author HP_User
@@ -21,7 +21,7 @@ public class Vihrea extends Nappula{
  
          ArrayList<Palanen> palaset = super.getPalaset();
 
-        for (int i = 1; i < palaset.size(); i++) {
+        for (int i = 0; i < palaset.size(); i++) {
             int rivi = 0;
             int sarake = 0;
 
@@ -38,6 +38,7 @@ public class Vihrea extends Nappula{
                 rivi = 1;
                 sarake = 2;
             }
+             pala.setVari(Color.GREEN);
             muutaKoordinaatteja(pala, rivi, sarake);
         }       
        

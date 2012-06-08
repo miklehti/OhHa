@@ -29,7 +29,7 @@ public class Next {
 
     public Next() {
 
-        next = new Palanen[5][5];
+        next = new Palanen[4][6];
         for (int rivi = 0; rivi < next.length; rivi++) {
             for (int sarake = 0; sarake < next[0].length; sarake++) {
 
@@ -141,5 +141,17 @@ public class Next {
     public void setNappula(Nappula nappula) {
         this.nappula = nappula;
     }
-    
+
+    public Palanen[][] getNext() {
+        return next;
+    }
+    public int getNextRivit(){
+        return next.length;
+    }
+       public int getNextSarakkeet(){
+        return next[0].length;
+    }
+       public Palanen annaNextPalanen(int rivi, int sarake){
+           return next[rivi][sarake];
+       }
 }

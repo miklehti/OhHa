@@ -16,12 +16,9 @@ public abstract class Nappula {
      * voiko nappulaa enää siirtää
      */
     private boolean onkoNappulaElossa;
+
     /**
-     * nappulan väri
-     */
-    private int vari;
-    /**
-     * missä asennossa nappula on 1-4 
+     * missä asennossa nappula on 1-4
      */
     private int asento;
     /**
@@ -33,7 +30,8 @@ public abstract class Nappula {
      */
     private Palanen keskipiste;
     /**
-     *kuinka paljon tilaa nappula tarvitsee pyöriäkseen ympäri, perusnappulalle 1, paitsi puikulalle 2.
+     * kuinka paljon tilaa nappula tarvitsee pyöriäkseen ympäri, perusnappulalle
+     * 1, paitsi puikulalle 2.
      */
     private int sade;
     /**
@@ -49,12 +47,11 @@ public abstract class Nappula {
 
         }
         onkoNappulaElossa = true;
-        vari = 1;
+
         keskipiste = null;
 
     }
-
- 
+    
 
     public Palanen getKeskipiste() {
         return keskipiste;
@@ -75,8 +72,6 @@ public abstract class Nappula {
     public void setAloituskorkeus(int aloituskorkeus) {
         this.aloituskorkeus = aloituskorkeus;
     }
-
-
 
     public void setKeskipiste(Palanen keskipiste) {
         this.keskipiste = keskipiste;
@@ -124,17 +119,44 @@ public abstract class Nappula {
         return asento;
     }
 
-
-
     public void setAsento(int asento) {
         this.asento = asento;
     }
 
 
-    
 
-    public int getVari() {
-        return vari;
+       /**
+     * siirtää nappulan jokaista palasta oikeaan, alas tai vasemmalle yhden yksiköän verran.
+     */
+    public void liiku(String suunta) {
+        int rivi = 0;
+        int sarake = 0;
+        if (suunta.equals("alas")) {
+            rivi = 1;
+            sarake = 0;
+        }
+        if (suunta.equals("vasemmalle")) {
+            rivi = 0;
+            sarake = -1;
+        }
+        if (suunta.equals("oikealle")) {
+            rivi = 0;
+            sarake = 1;
+        }
+        toteutaLiikkuminen(rivi, sarake);
+    }
+
+          /**
+     * toteuttaa nappulan jokaista palasta oikeaan, alas tai vasemmalle yhden yksiköän verran.
+     */
+    public void toteutaLiikkuminen(int rivi, int sarake) {
+        for (int i = 0; i < palaset.size(); i++) {
+            Palanen tutkittava = palaset.get(i);
+            int uusiRivi = tutkittava.getRivi() + rivi;
+            int uusiSarake = tutkittava.getSarake() + sarake;
+            tutkittava.setRivi(uusiRivi);
+            tutkittava.setSarake(uusiSarake);
+        }
     }
 
    
@@ -142,58 +164,7 @@ public abstract class Nappula {
      * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
      *
      *
-     *
-     *
-     */
-    public void liikuAlas() {
-        
-        for(int i = 0; i<palaset.size();i++){
-            Palanen tutkittava = palaset.get(i);
-            int uusiRivi = tutkittava.getRivi()+1;
-            tutkittava.setRivi(uusiRivi);
-        }
-        
-    }
-    
-       /**
-     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
-     *
-     *
-     *
-     *
-     */
-
-    public void liikuOikealle() {
-        
-        for(int i = 0; i<palaset.size();i++){
-            Palanen tutkittava = palaset.get(i);
-            int uusiSarake = tutkittava.getSarake()+1;
-            tutkittava.setSarake(uusiSarake);
-        }
-        
-    }
-
-       /**
-     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
-     *
-     *
-     *
-     *
-     */
-    
-    public void liikuVasemmalle() {
-         for(int i = 0; i<palaset.size();i++){
-            Palanen tutkittava = palaset.get(i);
-            int uusiSarake = tutkittava.getSarake()-1;
-            tutkittava.setSarake(uusiSarake);
-        }
-    }
-
-       /**
-     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
-     *
-     *
-     *@param onkoNappulaElossa kertoo onko nappula hengissä
+     * @param onkoNappulaElossa kertoo onko nappula hengissä
      *
      */
     public void setOnkoNappulaElossa(boolean onkoNappulaElossa) {
@@ -203,14 +174,14 @@ public abstract class Nappula {
     public boolean isNappulaElossa() {
         return onkoNappulaElossa;
     }
-    
-       /**
-     * pyörimistä varten, muuttaa nappulan palasten koordinaatteja kun nappula pyörii
+
+    /**
+     * pyörimistä varten, muuttaa nappulan palasten koordinaatteja kun nappula
+     * pyörii
      *
      *
-     *@param pala muutettava palanen, 
-     *@param rivi on uusi rivi, 
-     * @sarake sarake on uusi sarake
+     * @param pala muutettava palanen,
+     * @param rivi on uusi rivi, @sarake sarake on uusi sarake
      *
      */
     public void muutaKoordinaatteja(Palanen pala, int rivi, int sarake) {
@@ -219,15 +190,13 @@ public abstract class Nappula {
         int uusiEkaSarake = pala.getSarake() + sarake;
         pala.setSarake(uusiEkaSarake);
     }
-    
-           /**
+
+    /**
      * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
      *
      *
-     *@param tutkittavaAlue tutkittava alue, 
-     
+     * @param tutkittavaAlue tutkittava alue,      *
      *
      */
-
     public abstract boolean pyorahda(Palanen[][] tutkittavaAlue);
 }

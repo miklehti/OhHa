@@ -9,7 +9,7 @@ import tetris.Nappula;
 import tetris.Palanen;
 import tetris.ReunaPalanen;
 import tetris.TetrisPalanen;
-
+import java.awt.Color;
 /**
  *
  * @author HP_User
@@ -20,9 +20,9 @@ public class vaaleanpunainenL extends Nappula{
 
         super(4, x, y);
  ArrayList<Palanen> palaset = super.getPalaset();
-        for (int i = 1; i < palaset.size(); i++) {
+        for (int i = 0; i < palaset.size(); i++) {
             int rivi = 0;
-            int sarake = -1;
+            int sarake = 0;
 
             Palanen pala = palaset.get(i);
             if (i == 1) {
@@ -37,6 +37,7 @@ public class vaaleanpunainenL extends Nappula{
                 rivi = 1;
                 sarake = 2;
             }
+             pala.setVari(Color.PINK);
             muutaKoordinaatteja(pala, rivi, sarake);
         }
        

@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package tetris;
+    import java.awt.Color;
 
 /**
  *
@@ -13,6 +14,9 @@ public class Palanen {
     
     private int rivi;
     private int sarake;
+    private Color vari;
+
+
    
    
     
@@ -40,6 +44,12 @@ public class Palanen {
         this.sarake = sarake;
     }
 
+    public void setVari(Color vari) {
+        this.vari = vari;
+    }
 
+    public Color getVari() {
+        return vari;
+    }
     
 }

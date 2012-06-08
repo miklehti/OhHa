@@ -4,6 +4,8 @@
  */
 package tetris;
 
+import java.awt.Color;
+
 /**
  *
  * @author miklehti
@@ -14,6 +16,7 @@ public class ReunaPalanen extends Palanen {
     public ReunaPalanen(int rivi, int sarake){
         super(rivi,sarake);
         reuna = true;
+        super.setVari(Color.gray);
     }
 
     

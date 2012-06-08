@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import nappulat.Nelio;
 import org.junit.*;
 import static org.junit.Assert.*;
+import tetris.Nappula;
 import tetris.Pelilauta;
 
 /**
@@ -193,12 +194,18 @@ public class RysaytysTest {
     }
 
     public boolean annaAlustusToimet() {
-        pelilauta.uusiNappulaNextistaDUMMY();
+        uusiNappulaNextistaDUMMY();
         pelilauta.uusiNappulaNextiin();
         //pelilauta.tulostaMatriisi("nextistä");
         pelilauta.update();
         boolean onnistuiko = pelilauta.siirraNappulaaAlas(2, true);
         return onnistuiko;
 
+    }
+           public void uusiNappulaNextistaDUMMY() {
+        Nelio nelio = new Nelio(0, 5);
+        Nappula nappula = pelilauta.getNappula();
+        nappula = nelio;
+        pelilauta.uusiNappulaLaudalleNakyviin(nappula);
     }
 }

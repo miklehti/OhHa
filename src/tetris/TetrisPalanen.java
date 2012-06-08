@@ -8,12 +8,16 @@ package tetris;
  *
  * @author miklehti
  */
+
+import java.awt.Color;
+
 public class TetrisPalanen extends Palanen{
      private boolean tetrispalanen;
      
      public TetrisPalanen(int rivi, int sarake){
          super(rivi,sarake);
          tetrispalanen=true;
+         
      }
 
     public boolean isTetrispalanen() {

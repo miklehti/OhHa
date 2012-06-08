@@ -9,7 +9,7 @@ import tetris.Nappula;
 import tetris.Palanen;
 import tetris.ReunaPalanen;
 import tetris.TetrisPalanen;
-
+import java.awt.Color;
 /**
  *
  * @author HP_User
@@ -22,7 +22,7 @@ public class Puikula extends Nappula {
 
         ArrayList<Palanen> palaset = super.getPalaset();
 
-        for (int i = 1; i < palaset.size(); i++) {
+        for (int i = 0; i < palaset.size(); i++) {
             int rivi = 0;
             int sarake = 0;
 
@@ -39,6 +39,7 @@ public class Puikula extends Nappula {
                 rivi = 0;
                 sarake = 3;
             }
+             pala.setVari(Color.RED);
             muutaKoordinaatteja(pala, rivi, sarake);
         }
         super.setPalaset(palaset);
@@ -60,13 +61,13 @@ public class Puikula extends Nappula {
     public boolean voinkoPyoria(Palanen[][] tutkittavaAlue) {
         int asento = super.getAsento();
         if (asento == 1) {
-            if (tutkittavaAlue[1][2] instanceof Palanen || tutkittavaAlue[3][2] instanceof Palanen || tutkittavaAlue[4][2] instanceof Palanen) {
+            if (tutkittavaAlue[1][2] instanceof Palanen || tutkittavaAlue[3][2] instanceof Palanen || tutkittavaAlue[4][2] instanceof Palanen|| tutkittavaAlue[3][3] instanceof Palanen) {
                 return false;
             }
 
         }
         if (asento == 2) {
-            if (tutkittavaAlue[2][1] instanceof Palanen || tutkittavaAlue[2][3] instanceof Palanen || tutkittavaAlue[2][4] instanceof Palanen) {
+            if (tutkittavaAlue[2][1] instanceof Palanen || tutkittavaAlue[2][3] instanceof Palanen || tutkittavaAlue[2][4] instanceof Palanen || tutkittavaAlue[3][3] instanceof Palanen) {
                 return false;
             }
         }
