@@ -10,16 +10,17 @@ import tetris.Palanen;
 import tetris.ReunaPalanen;
 import tetris.TetrisPalanen;
 import java.awt.Color;
+
 /**
  *
  * @author HP_User
  */
-public class vaaleanpunainenL extends Nappula{
-    
-     public vaaleanpunainenL(int x, int y) {
+public class vaaleanpunainenL extends Nappula {
+
+    public vaaleanpunainenL(int x, int y) {
 
         super(4, x, y);
- ArrayList<Palanen> palaset = super.getPalaset();
+        ArrayList<Palanen> palaset = super.getPalaset();
         for (int i = 0; i < palaset.size(); i++) {
             int rivi = 0;
             int sarake = 0;
@@ -37,66 +38,57 @@ public class vaaleanpunainenL extends Nappula{
                 rivi = 1;
                 sarake = 2;
             }
-             pala.setVari(Color.PINK);
+            pala.setVari(Color.PINK);
             muutaKoordinaatteja(pala, rivi, sarake);
         }
-       
+
 
         super.setPalaset(palaset);
-        super.setAsento(1);       
+        super.setAsento(1);
         super.setAloituskorkeus(2);
         super.setKeskipiste(super.getPalanen(1));
         super.setSade(1);
 
     }
 
-     
-                             /**
+    /**
      * voiko palanen pyöriä
-     *
-     *
-     *@param tutkittavaAlue tutkittava alue, 
-     
-     *@return onnaako
+     * @param tutkittavaAlue tutkittava alue,      *
+     * @return onnaako
      */
-     
     public boolean voinkoPyoria(Palanen[][] tutkittavaAlue) {
         int asento = super.getAsento();
         if (asento == 1) {
             if (tutkittavaAlue[0][1] instanceof Palanen || tutkittavaAlue[2][0] instanceof Palanen || tutkittavaAlue[2][1] instanceof Palanen) {
                 return false;
             }
-           
+
         }
         if (asento == 2) {
             if (tutkittavaAlue[1][2] instanceof Palanen || tutkittavaAlue[0][0] instanceof Palanen || tutkittavaAlue[1][0] instanceof Palanen) {
                 return false;
             }
-           
+
         }
         if (asento == 3) {
             if (tutkittavaAlue[2][1] instanceof Palanen || tutkittavaAlue[0][1] instanceof Palanen || tutkittavaAlue[0][2] instanceof Palanen) {
                 return false;
             }
-           
+
         }
         if (asento == 4) {
             if (tutkittavaAlue[1][0] instanceof Palanen || tutkittavaAlue[2][2] instanceof Palanen || tutkittavaAlue[1][2] instanceof Palanen) {
                 return false;
             }
-           
+
         }
         return true;
     }
-    
-    
-                        /**
-     * toteuta pyörähdys nappulatasolla
-     *
-     *
 
+    /**
+     * toteuta pyörähdys nappulatasolla
      */
-      public void toteutaPyorahdys() {
+    public void toteutaPyorahdys() {
         int asento = super.getAsento();
         if (asento == 1) {
             pyorahdysYksi(true);
@@ -117,33 +109,29 @@ public class vaaleanpunainenL extends Nappula{
         }
 
     }
-      
-                              /**
+
+    /**
      * toteuta pyörähdys ja mihin suuntaan
-     *
-     *@param myotaPaivaan kumpaan suuntaan pyöritään
+     * @param myotaPaivaan kumpaan suuntaan pyöritään
      */
-      
-       public void pyorahdysYksi(boolean myotaPaivaan) {
+    public void pyorahdysYksi(boolean myotaPaivaan) {
         ArrayList<Palanen> palaset = super.getPalaset();
 
-        for (int i = 0; i < palaset.size(); i++) {          
-                pyoraytaPalaaYksi(palaset, i, myotaPaivaan);
+        for (int i = 0; i < palaset.size(); i++) {
+            pyoraytaPalaaYksi(palaset, i, myotaPaivaan);
 
         }
         super.setPalaset(palaset);
-       
+
     }
-     
-                                           /**
+
+    /**
      * toteuta pyörähdys palastasolla
-     *
-     *@ param palaset palaset
+     * @ param palaset palaset
      * @param i mikä palanen?
      * @param myotaPaivaan kumpaan suuntaan pyöritetään?
      */
-       
-     public void pyoraytaPalaaYksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
+    public void pyoraytaPalaaYksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
         int rivi = 0;
         int sarake = 0;
 
@@ -172,35 +160,29 @@ public class vaaleanpunainenL extends Nappula{
         }
 
     }
-     
-          
-                          /**
+
+    /**
      * toteuta pyörähdys ja mihin suuntaan
-     *
-     *@param myotaPaivaan kumpaan suuntaan pyöritään
+     * @param myotaPaivaan kumpaan suuntaan pyöritään
      */
-     
-      public void pyorahdysKaksi(boolean myotaPaivaan) {
+    public void pyorahdysKaksi(boolean myotaPaivaan) {
         ArrayList<Palanen> palaset = super.getPalaset();
 
-        for (int i = 0; i < palaset.size(); i++) {          
-                pyoraytaPalaaKaksi(palaset, i, myotaPaivaan);
+        for (int i = 0; i < palaset.size(); i++) {
+            pyoraytaPalaaKaksi(palaset, i, myotaPaivaan);
 
         }
         super.setPalaset(palaset);
-       
+
     }
-      
-                                           /**
+
+    /**
      * toteuta pyörähdys palastasolla
-     *
-     *@ param palaset palaset
+     * @ param palaset palaset
      * @param i mikä palanen?
      * @param myotaPaivaan kumpaan suuntaan pyöritetään?
      */
-     
-     
-     public void pyoraytaPalaaKaksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
+    public void pyoraytaPalaaKaksi(ArrayList<Palanen> palaset, int i, boolean myotaPaivaan) {
         int rivi = 0;
         int sarake = 0;
 
@@ -222,24 +204,19 @@ public class vaaleanpunainenL extends Nappula{
         }
         if (myotaPaivaan == true) {
             muutaKoordinaatteja(pala, rivi, sarake);
-             super.setAsento(3);
+            super.setAsento(3);
         } else {
             muutaKoordinaatteja(pala, rivi * (-1), sarake * (-1));
-             super.setAsento(1);
+            super.setAsento(1);
         }
 
     }
-           /**
-     * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
-     *
-     *
-     *@param tutkittavaAlue tutkittava alue, 
-     
-     *
-     */
-   
 
-    public boolean pyorahda(Palanen[][]  tutkittavaAlue) {
+    /**
+     * jokaiselle aliluokan tulee toteuttaa oma pyörimisensä
+     * @param tutkittavaAlue tutkittava alue,      *
+     */
+    public boolean pyorahda(Palanen[][] tutkittavaAlue) {
         if (voinkoPyoria(tutkittavaAlue) == false) {
             return false;
         }

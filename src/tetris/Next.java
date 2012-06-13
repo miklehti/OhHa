@@ -14,16 +14,17 @@ import nappulat.*;
  */
 public class Next {
 
-        /**
+    /**
      * palasista koostuva matriisi jonne seuraava nappula kuvataan
      */
     private Palanen next[][];
-        /**
-     *mikä nappula on tulossa seuraavaksi
+    /**
+     * mikä nappula on tulossa seuraavaksi
      */
     private Nappula nappula;
-        /**
-     * taulukko kaikista mahdollisista nappuloista, täältä sitten arvotaan seuraava
+    /**
+     * taulukko kaikista mahdollisista nappuloista, täältä sitten arvotaan
+     * seuraava
      */
     private ArrayList<Nappula> arvottavatNappulat;
 
@@ -37,15 +38,15 @@ public class Next {
 
 
             }
-       
+
         }
-        
-        
-       
-             uusiNappulaNextiin();
+
+
+
+        uusiNappulaNextiin();
     }
 
-         /**
+    /**
      * käytetään apuna testauksessa
      */
     public void tulostaNext() {
@@ -67,12 +68,13 @@ public class Next {
         System.out.println("");
     }
 
-        /**
+    /**
      * arpoo seuraavan nappulan
+     *
      * @return Nappula arvottu nappula
      */
     public Nappula arvoNappula() {
-         arvottavatNappulat = new ArrayList<Nappula>();
+        arvottavatNappulat = new ArrayList<Nappula>();
         Nelio nelio = new Nelio(0, 5);
         arvottavatNappulat.add(nelio);
 
@@ -94,40 +96,49 @@ public class Next {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         arvottavatNappulat.add(parasnappula);
 
-         Random nappulanArpoja = new Random();
+        Random nappulanArpoja = new Random();
         int vastaus = nappulanArpoja.nextInt(7);
-      
-       
-        return   arvottavatNappulat.get(vastaus) ;
+
+
+        return arvottavatNappulat.get(vastaus);
     }
-    
-    public void tyhjennaNexti(){
-         for (int rivi = 0; rivi < next.length; rivi++) {
+
+    /**
+     * Tyhjentää nextin
+     */
+    public void tyhjennaNexti() {
+        for (int rivi = 0; rivi < next.length; rivi++) {
             for (int sarake = 0; sarake < next[0].length; sarake++) {
 
                 next[rivi][sarake] = null;
 
 
             }
-       
+
         }
     }
 
+    /**
+     * asettaa uuden nappulan nextiin
+     */
     public void uusiNappulaNextiin() {
 
         this.nappula = arvoNappula();
-    
+
         tyhjennaNexti();
         asetaNappulanPaikkaNextiin();
 
     }
-    
+
+    /**
+     * asettaa uuden nappulan nextiin
+     */
     public void asetaNappulanPaikkaNextiin() {
         ArrayList<Palanen> palaset = nappula.getPalaset();
         for (int i = 0; i < palaset.size(); i++) {
             Palanen palanen = palaset.get(i);
-            int rivinNumero = palanen.getRivi()+1;
-            int sarakeNumero = palanen.getSarake()-3;
+            int rivinNumero = palanen.getRivi() + 1;
+            int sarakeNumero = palanen.getSarake() - 3;
 //            System.out.println("rivi" + rivinNumero);
 //            System.out.println("sarake" + sarakeNumero);
             next[rivinNumero][sarakeNumero] = palanen;
@@ -145,13 +156,16 @@ public class Next {
     public Palanen[][] getNext() {
         return next;
     }
-    public int getNextRivit(){
+
+    public int getNextRivit() {
         return next.length;
     }
-       public int getNextSarakkeet(){
+
+    public int getNextSarakkeet() {
         return next[0].length;
     }
-       public Palanen annaNextPalanen(int rivi, int sarake){
-           return next[rivi][sarake];
-       }
+
+    public Palanen annaNextPalanen(int rivi, int sarake) {
+        return next[rivi][sarake];
+    }
 }

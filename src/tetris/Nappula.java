@@ -160,13 +160,7 @@ public abstract class Nappula {
     }
 
    
-    /**
-     * siirtää nappulan jokaista palasta oikeaan suuntaan yhden yksiköän verran.
-     *
-     *
-     * @param onkoNappulaElossa kertoo onko nappula hengissä
-     *
-     */
+
     public void setOnkoNappulaElossa(boolean onkoNappulaElossa) {
         this.onkoNappulaElossa = onkoNappulaElossa;
     }
@@ -178,8 +172,6 @@ public abstract class Nappula {
     /**
      * pyörimistä varten, muuttaa nappulan palasten koordinaatteja kun nappula
      * pyörii
-     *
-     *
      * @param pala muutettava palanen,
      * @param rivi on uusi rivi, @sarake sarake on uusi sarake
      *

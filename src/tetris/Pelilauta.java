@@ -95,10 +95,6 @@ public class Pelilauta {
 
     /**
      * käytetään apuna testauksessa, tulostaa merkein matriisin
-     *
-     *
-     *
-     *
      */
     public void tulostaMatriisi(String otsikko) {
         System.out.println(otsikko);
@@ -122,10 +118,6 @@ public class Pelilauta {
 
     /**
      * käytetään apuna testauksessa
-     *
-     *
-     *
-     *
      */
     public int pelilaudanSumma() {
         int summa = 0;
@@ -147,16 +139,8 @@ public class Pelilauta {
         return summa;
     }
 
-//    public int pelilaudanRuudunArvo(int rivi, int sarake) {
-//        int arvo = pelilauta[rivi][sarake];
-//        return arvo;
-//    }
     /**
      * asettaa nappulan laudalle
-     *
-     *
-     *
-     *
      */
     public void asetaNappulanPaikkaLaudalla() {
         ArrayList<Palanen> palaset = nappula.getPalaset();
@@ -168,6 +152,9 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * asettaa nappulan laudalle
+     */
     public void uusiNappulaLaudalle(Nappula nappula) {
         this.nappula = nappula;
 
@@ -176,15 +163,13 @@ public class Pelilauta {
     }
 
     /**
-     * asettaa uuden nappulan nextiin
+     * hakee uuden nappulan nextista
      */
     public void uusiNappulaNextista() {
         Nappula seuraava = next.getNappula();
         this.nappula = seuraava;
         uusiNappulaLaudalleNakyviin(nappula);
     }
-
-
 
     public void uusiNappulaNextiin() {
         next.uusiNappulaNextiin();
@@ -195,18 +180,33 @@ public class Pelilauta {
 
     }
 
+    /**
+     * asettaa nappulakansanpaikan laudalla
+     */
     public void asetaNappulaKasanPaikkaLaudalla() {
-        ArrayList<Palanen> palaset = moykky.getPalaset();
-        for (int i = 0; i < palaset.size(); i++) {
-            Palanen palanen = palaset.get(i);
-            int rivinNumero = palanen.getRivi();
-            int sarakeNumero = palanen.getSarake();
-//            System.out.println("sarake" +sarakeNumero);
-//            System.out.println("rivi" + rivinNumero);
-            pelilauta[rivinNumero][sarakeNumero] = palanen;
+        int i=-2;
+        int rivinNumero=-2;
+        int sarakeNumero=-2;
+        ArrayList<Palanen> palaset = new ArrayList<Palanen>();
+        try {
+            palaset = moykky.getPalaset();
+            for (i = 0; i < palaset.size(); i++) {
+
+                Palanen palanen = palaset.get(i);
+
+                rivinNumero = palanen.getRivi();
+
+                sarakeNumero = palanen.getSarake();
+
+                pelilauta[rivinNumero][sarakeNumero] = palanen;
+            }
+        } catch (NullPointerException e) {
         }
     }
 
+    /**
+     * poista möykky näkyvistä laudalta
+     */
     public void poistaMoykkyNakyvista() {
         ArrayList<Palanen> palaset = moykky.getPalaset();
         for (int i = 0; i < palaset.size(); i++) {
@@ -217,13 +217,18 @@ public class Pelilauta {
         }
     }
 
-    //testausfunktio
+    /**
+     * testausfunktio
+     */
     public void uusiNappulaLaudalleNakyviin(Nappula nappula) {
         uusiNappulaLaudalle(nappula);
         asetaNappulanPaikkaLaudalla();
         asetaNappulaKasanPaikkaLaudalla();
     }
 
+    /**
+     * päivittää pelilaudan tilanteen
+     */
     public void update() {
         poistaNappulaNakyvista();
         asetaNappulanPaikkaLaudalla();
@@ -233,10 +238,6 @@ public class Pelilauta {
 
     /**
      * muuttaa nappulan napppulakasaan
-     *
-     *
-     *
-     *
      */
     public boolean muutaNappulaMoykyksi() {
         if (nappula.isNappulaElossa() == false) {
@@ -246,18 +247,10 @@ public class Pelilauta {
         }
         return false;
     }
-//
-//    public void asetaMoykynPalasetKolmosiksi() {
-//        ArrayList<Palanen> moykynPalaset = new ArrayList<Palanen>();
-//        moykynPalaset = moykky.getPalaset();
-//        for (int i = 0; i < moykynPalaset.size(); i++) {
-//            Palanen pala = moykynPalaset.get(i);
-//            int rivi = pala.getRivi();
-//            int sarake = pala.getSarake();
-//            pelilauta[rivi][sarake] = 3;
-//        }
-//    }
 
+    /**
+     * poistaa nappulan näkyvistä
+     */
     public void poistaNappulaNakyvista() {
         for (int rivi = 0; rivi < pelilauta.length; ++rivi) {
             for (int sarake = 0; sarake < pelilauta[rivi].length; ++sarake) {
@@ -291,10 +284,9 @@ public class Pelilauta {
     }
 
     /**
-     * tutkii voiko nappula liikkua alas, oikealle, vasemmalle että ei ole reuna
-     * tai nappulakasa tiellä
+     * tutkii onko möykky nappulan tiellä
      */
-    public boolean tutkiVoinkoLiikkua(int rivi, int sarake) {
+    public boolean tutkiOnkoMoykkyTiella(int rivi, int sarake) {
         ArrayList<Palanen> palaset = nappula.getPalaset();
         for (int i = 0; i < palaset.size(); i++) {
             Palanen palanen = palaset.get(i);
@@ -309,11 +301,39 @@ public class Pelilauta {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    /**
+     * tutkii onko reuna nappulan tiellä kun liikutaan alas
+     */
+    public boolean tutkiOnkoReunaTiella(int rivi, int sarake) {
+        ArrayList<Palanen> palaset = nappula.getPalaset();
+        for (int i = 0; i < palaset.size(); i++) {
+            Palanen palanen = palaset.get(i);
+            int rivinNumero = palanen.getRivi();
+            int sarakeNumero = palanen.getSarake();
             Palanen tutkittavaPalanen = pelilauta[rivinNumero - rivi][sarakeNumero - sarake];
             if (tutkittavaPalanen instanceof ReunaPalanen) {
                 return false;
             }
         }
+        return true;
+    }
+
+    /**
+     * tutkii voiko nappula liikkua alas, oikealle, vasemmalle että ei ole reuna
+     * tai nappulakasa tiellä
+     */
+    public boolean tutkiVoinkoLiikkua(int rivi, int sarake) {
+        if (tutkiOnkoMoykkyTiella(rivi, sarake) == false) {
+            return false;
+        }
+        if (tutkiOnkoReunaTiella(rivi, sarake) == false) {
+            return false;
+        }
+
         return true;
     }
 
@@ -326,9 +346,9 @@ public class Pelilauta {
             return false;
         }
         if (voinkoLiikkua(suunta) == false) {
-            if(suunta.equals("alas")){
-                  nappula.setOnkoNappulaElossa(false);
-            }       
+            if (suunta.equals("alas")) {
+                nappula.setOnkoNappulaElossa(false);
+            }
             return false;
         }
         nappula.liiku(suunta);
@@ -410,8 +430,6 @@ public class Pelilauta {
      * (eli siis minkä palasen suhteen nappula pyörii ympäri) tai jos säde 2
      * niin 5x alue jne.
      *
-     *
-     *
      * @param palasten otos
      */
     public Palanen[][] annaTutkittavaAlue() {
@@ -439,8 +457,6 @@ public class Pelilauta {
         }
         return tutkittavaAlue;
     }
-
-   
 
     /**
      * nappula osunut reunaan tai nappulakasaan, muutetaan kuolleeksi kutsumalla
@@ -590,7 +606,7 @@ public class Pelilauta {
             if (tulostetaanko == true) {
                 tulostaMatriisi("pyoritaNappulaa");
             }
-           // poistaNappulaNakyvista();
+            // poistaNappulaNakyvista();
             onnistuiko = pyoritaNappulaa();
             update();
             //asetaNappulanPaikkaLaudalla();
@@ -601,7 +617,8 @@ public class Pelilauta {
         }
         return onnistuiko;
     }
- /**
+
+    /**
      * pyöritä nappulaa, kutsutaan nappulan omaa pyöri metodia.
      *
      * @return onnistuiko
@@ -611,6 +628,7 @@ public class Pelilauta {
         boolean onnistuiko = nappula.pyorahda(tutkittavaAlue);
         return onnistuiko;
     }
+
     public int getSarakkeet() {
         return sarakkeet;
     }
@@ -630,5 +648,4 @@ public class Pelilauta {
     public Next getNext() {
         return next;
     }
-    
 }

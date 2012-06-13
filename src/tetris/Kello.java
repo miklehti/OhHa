@@ -9,19 +9,28 @@ package tetris;
  * @author miklehti
  */
 public class Kello {
-    
+
     private long startTime;
 
     public Kello() {
-        startTime=System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
     }
 
+    /**
+     * nollaaKello
+     */
     public void nollaaKello() {
-       startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
 
     }
-    public long paljonkoOnKulunut(){
-       
+    
+    
+    /**
+     * paljonko aikaa on kulunut
+     */
+
+    public long paljonkoOnKulunut() {
+
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
