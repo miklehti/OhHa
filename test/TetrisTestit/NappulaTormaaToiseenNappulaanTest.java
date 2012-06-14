@@ -101,16 +101,18 @@ public class NappulaTormaaToiseenNappulaanTest {
         asetaKaksiNappulaTorniaValiYksi();
         uusiNappulaNextistaDUMMYPuikula();
         pelilauta.uusiNappulaNextiin();
-        pelilauta.siirraNappulaaAlas(2, true);
+        pelilauta.siirraNappulaaAlas(2, false);
         pelilauta.pyoritaNappulaa();
-        pelilauta.siirraNappulaaOikealle(1, true);
-        pelilauta.siirraNappulaaAlas(2, true);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1,true);
+        pelilauta.siirraNappulaaOikealle(1, false);
+        pelilauta.siirraNappulaaAlas(2, false);
+        boolean onnistuiko = pelilauta.pyoritaNappulaa(1,false);
         assertFalse(
                 onnistuiko);
     }
 
-    public void asetaKaksiNappulaTorniaValiKaksi() {
+    //asettaa pelilaudalle kaksi tornia joiden välissä on kaksi ruutua tyhjää tilaa jonne testattava nappula 
+    //sitten laitetaan
+    private void asetaKaksiNappulaTorniaValiKaksi() {
         annaAlustusToimet();
 
         pelilauta.siirraNappulaaVasemmalle(2, false);
@@ -151,8 +153,11 @@ public class NappulaTormaaToiseenNappulaanTest {
         pelilauta.muutaNappulaMoykyksi();
         pelilauta.update();
     }
+    
+      //asettaa pelilaudalle kaksi tornia joiden välissä on yksi ruutua tyhjää tilaa jonne testattava nappula 
+    //sitten laitetaan
 
-    public void asetaKaksiNappulaTorniaValiYksi() {
+    private void asetaKaksiNappulaTorniaValiYksi() {
         annaAlustusToimet();
 
         pelilauta.siirraNappulaaVasemmalle(1, false);
@@ -195,7 +200,10 @@ public class NappulaTormaaToiseenNappulaanTest {
 
     }
 
-    public void asetaKaksiTorniaValiKolme() {
+        //asettaa pelilaudalle kaksi tornia joiden välissä on kolme ruutua tyhjää tilaa jonne testattava nappula 
+    //sitten laitetaan
+    
+    private void asetaKaksiTorniaValiKolme() {
         annaAlustusToimet();
 
         pelilauta.siirraNappulaaVasemmalle(3, false);
@@ -237,7 +245,10 @@ public class NappulaTormaaToiseenNappulaanTest {
         pelilauta.update();
     }
 
-    public void kaksiTorniaValiNelja() {
+     //asettaa pelilaudalle kaksi tornia joiden välissä on neljä ruutua tyhjää tilaa jonne testattava nappula 
+    //sitten laitetaan
+    
+    private void kaksiTorniaValiNelja() {
         annaAlustusToimet();
 
         pelilauta.siirraNappulaaVasemmalle(4, false);
@@ -279,7 +290,7 @@ public class NappulaTormaaToiseenNappulaanTest {
         pelilauta.update();
     }
 
-    public boolean annaAlustusToimet() {
+    private boolean annaAlustusToimet() {
         uusiNappulaNextistaDUMMY();
         pelilauta.uusiNappulaNextiin();
         //pelilauta.tulostaMatriisi("nextistä");
@@ -289,14 +300,14 @@ public class NappulaTormaaToiseenNappulaanTest {
 
     }
 
-    public void uusiNappulaNextistaDUMMY() {
+    private void uusiNappulaNextistaDUMMY() {
         Nelio nelio = new Nelio(0, 5);
         Nappula nappula = pelilauta.getNappula();
         nappula = nelio;
         pelilauta.uusiNappulaLaudalleNakyviin(nappula);
     }
 
-    public void uusiNappulaNextistaDUMMYPuikula() {
+    private void uusiNappulaNextistaDUMMYPuikula() {
         Puikula puikula = new Puikula(0, 4);
         Nappula nappula = pelilauta.getNappula();
         nappula = puikula;

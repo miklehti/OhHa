@@ -38,11 +38,7 @@ public class RysaytysTest {
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
 
     @Test
     public void siirraNeliotaOikealle4Kertaa() {
@@ -50,9 +46,9 @@ public class RysaytysTest {
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
         pelilauta.siirraNappulaaVasemmalle(5, false);
         pelilauta.siirraNappulaaAlas(5, false);
-        boolean onnistuiko = pelilauta.onkoRysaytettavaa();
+   
         assertFalse(
-                onnistuiko);
+                pelilauta.onkoRysaytettavaa());
     }
 
     @Test
@@ -92,9 +88,9 @@ public class RysaytysTest {
         pelilauta.muutaNappulaMoykyksi();
         pelilauta.update();
 
-        boolean onnistuiko = pelilauta.onkoRysaytettavaa();
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.onkoRysaytettavaa());
     }
 
     @Test
@@ -188,7 +184,7 @@ public class RysaytysTest {
            annaAlustusToimet();
               pelilauta.update();
        int pelilaudansumma = pelilauta.pelilaudanSumma();
-       pelilauta.tulostaMatriisi("rysä");
+//       pelilauta.tulostaMatriisi("rysä");
         assertEquals(134,
                 pelilaudansumma);
     }

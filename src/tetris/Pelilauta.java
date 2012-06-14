@@ -293,16 +293,27 @@ public class Pelilauta {
             int rivinNumero = palanen.getRivi();
             int sarakeNumero = palanen.getSarake();
             ArrayList<Palanen> moykynPalaset = moykky.getPalaset();
-            for (int j = 0; j < moykynPalaset.size(); j++) {
-                Palanen moykynPalanen = moykynPalaset.get(j);
-                int moykynRivinNumero = moykynPalanen.getRivi() + rivi;
-                int moykynSarakeNumero = moykynPalanen.getSarake() + sarake;
-                if (moykynRivinNumero == rivinNumero && sarakeNumero == moykynSarakeNumero) {
-                    return false;
-                }
+            if (onkoMoykynPalanenJonkunPalasenTiella(moykynPalaset, rivi, sarake, rivinNumero, sarakeNumero)==true) {
+                return false;
             }
         }
         return true;
+    }
+
+   
+
+
+
+    private boolean onkoMoykynPalanenJonkunPalasenTiella(ArrayList<Palanen> moykynPalaset, int rivi, int sarake, int rivinNumero, int sarakeNumero) {
+        for (int j = 0; j < moykynPalaset.size(); j++) {
+            Palanen moykynPalanen = moykynPalaset.get(j);
+            int moykynRivinNumero = moykynPalanen.getRivi() + rivi;
+            int moykynSarakeNumero = moykynPalanen.getSarake() + sarake;
+            if (moykynRivinNumero == rivinNumero && sarakeNumero == moykynSarakeNumero) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -407,6 +418,10 @@ public class Pelilauta {
         return rysaytettavat;
     }
 
+     private boolean ollaankoYliPelilaudaAlueen(int rivi, int i, int sarake, int j) {
+        return rivi + i >= pelilauta.length - 1 || sarake + j >= pelilauta[0].length - 1;
+    }
+     
     /**
      * mitkä rivit rysäytetään, eli niiden yläpuolella olevaa nappulakasan
      * palasien riviä lisätään yhdellä per rivi jota rysäytetään.
@@ -422,6 +437,18 @@ public class Pelilauta {
             moykky.tiputaMoykkya(rysaytettavat.get(i));
         }
     }
+    
+        private Palanen annaVastaavaPalanen(int rivi, int i, int sarake, int j, Palanen[][] tutkittavaAlue) {
+        if (rivi + i < 0 || sarake + j <= 0) {
+            Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
+           return reunapalanen;
+        } else if (ollaankoYliPelilaudaAlueen(rivi, i, sarake, j)==true) {
+            Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
+             return reunapalanen;
+        } else {
+            return pelilauta[rivi + i][sarake + j];
+        }
+    }
 
     /**
      * pyöräytystä varten pitää antaa pelilaudalta tietoja että sopiiko nappula
@@ -432,26 +459,19 @@ public class Pelilauta {
      *
      * @param palasten otos
      */
-    public Palanen[][] annaTutkittavaAlue() {
+    
+    public Palanen[][] annaTutkittavaAlue(int tutkittavanAluuenKoko) {
 
         if (nappula.getSade() == 0) {
             return null;
-        }
-        Palanen[][] tutkittavaAlue = new Palanen[2 * nappula.getSade() + 1][2 * nappula.getSade() + 1];
+        }      
+        Palanen[][] tutkittavaAlue = new Palanen[tutkittavanAluuenKoko][tutkittavanAluuenKoko];
         Palanen keskipiste = nappula.getKeskipiste();
         int rivi = keskipiste.getRivi() - nappula.getSade();
         int sarake = keskipiste.getSarake() - nappula.getSade();
         for (int i = 0; i < 2 * nappula.getSade() + 1; i++) {
             for (int j = 0; j < 2 * nappula.getSade() + 1; j++) {
-                if (rivi + i < 0 || sarake + j <= 0) {
-                    Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
-                    tutkittavaAlue[i][j] = reunapalanen;
-                } else if (rivi + i >= pelilauta.length - 1 || sarake + j >= pelilauta[0].length - 1) {
-                    Palanen reunapalanen = new ReunaPalanen(rivi, sarake);
-                    tutkittavaAlue[i][j] = reunapalanen;
-                } else {
-                    tutkittavaAlue[i][j] = pelilauta[rivi + i][sarake + j];
-                }
+                tutkittavaAlue[i][j]=annaVastaavaPalanen(rivi, i, sarake, j, tutkittavaAlue);
 
             }
         }
@@ -624,7 +644,7 @@ public class Pelilauta {
      * @return onnistuiko
      */
     public boolean pyoritaNappulaa() {
-        Palanen[][] tutkittavaAlue = annaTutkittavaAlue();
+        Palanen[][] tutkittavaAlue = annaTutkittavaAlue(2 * nappula.getSade() + 1);
         boolean onnistuiko = nappula.pyorahda(tutkittavaAlue);
         return onnistuiko;
     }

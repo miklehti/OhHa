@@ -46,63 +46,63 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
     public void siirraNeliotaOikealle4Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(4, false);
+
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(4, false));
     }
 
     @Test
     public void siirraNeliotaOikealle5Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(5, false);
+
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(5, false));
     }
 
     @Test
     public void siirraNappulaaAlas20Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirraNappulaaAlas21Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirraNeliotaVasemmalle4Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(4, false);
+ 
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(4, false));
     }
 
     @Test
     public void siirraNeliotaVasemmalle5Kertaa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(5, false);
+
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(5, false));
     }
 
     @Test
     public void pyoraytaNelioa() {
         Nelio nelio = new Nelio(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(nelio);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     //***********************************************************************************
@@ -112,54 +112,53 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
     public void siirraPuikulaaOikealle3Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(3, false);
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(3, false));
     }
 
     @Test
     public void siirraPuikulaaOikealle4Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(4, false);
+   
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(4, false));
     }
 
     @Test
     public void siirraPuikulaaAlas21Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirraPuikulaaAlas22Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(22, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(22, false));
     }
 
     @Test
     public void siirraPuikulaaVasemmalle3Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(3, false);
+
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(3, false));
     }
 
     @Test
     public void siirraPuikulaaVasemmalle4Kertaa() {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(4, false);
+   
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(4, false));
     }
 ///*******************************************************
     //Siirrä puikulaa pystyasennossa testit:
@@ -170,9 +169,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(5, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(5, false));
     }
 
     @Test
@@ -181,9 +180,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(6, false);
+    
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(6, false));
     }
 
     @Test
@@ -192,9 +191,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(16, false);
+     
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(16, false));
     }
 
     @Test
@@ -203,9 +202,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(17, false);
+      
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(17, false));
     }
 
     @Test
@@ -214,9 +213,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(4, false);
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(4, false));
     }
 
     @Test
@@ -225,9 +224,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(5, false);
+
         assertFalse(
-                onnistuiko);
+                 pelilauta.siirraNappulaaVasemmalle(5, false));
     }
     //**********************************************************
     // pyöritä puikulaa
@@ -238,9 +237,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
 
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -248,9 +247,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(2, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(2, false));
     }
     //**********************************************************
     // pyöritä puikulaa, reuna tulee tielle
@@ -262,9 +261,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
         pelilauta.siirraNappulaaOikealle(5, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -274,9 +273,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
         pelilauta.siirraNappulaaOikealle(4, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+      
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -286,9 +285,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
         pelilauta.siirraNappulaaOikealle(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -298,9 +297,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
         pelilauta.siirraNappulaaVasemmalle(4, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -310,9 +309,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(3, false);
         pelilauta.pyoritaNappulaa(1, false);
         pelilauta.siirraNappulaaVasemmalle(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+        
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -320,9 +319,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(21, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+      
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -330,9 +329,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(20, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     @Test
@@ -340,9 +339,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Puikula puikula = new Puikula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(puikula);
         pelilauta.siirraNappulaaAlas(19, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(1, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(1, false));
     }
 
     //********************************************************************
@@ -352,90 +351,90 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
     public void siirraParasNappulaAlas20Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+       
         assertTrue(
-                onnistuiko);
+               pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirraparasnappulaNappulaaAlas21Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+      
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirraSininenAlas20Kertaa() {
         Sininen sininen = new Sininen(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(sininen);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirraSininenAlas21Kertaa() {
         Sininen sininen = new Sininen(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(sininen);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+      
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirraVihreaAlas20Kertaa() {
         Vihrea vihrea = new Vihrea(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(vihrea);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirraVihreaAlas21Kertaa() {
         Vihrea vihrea = new Vihrea(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(vihrea);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirraSininenLAlas20Kertaa() {
         SininenL sininenl = new SininenL(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(sininenl);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+        
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirrasininenlAlas21Kertaa() {
         SininenL sininenl = new SininenL(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(sininenl);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+       
         assertFalse(
-                onnistuiko);
+                 pelilauta.siirraNappulaaAlas(21, false));
     }
 
     @Test
     public void siirravaaleanpunainenLAlas20Kertaa() {
         vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(vaaleanpunainenL);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(20, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(20, false));
     }
 
     @Test
     public void siirravaaleanpunainenLAlas21Kertaa() {
         vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 5);
         pelilauta.uusiNappulaLaudalleNakyviin(vaaleanpunainenL);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(21, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(21, false));
     }
 
     //********************************************************************
@@ -445,10 +444,10 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
     public void tiputaParasta() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaAlas(1, false);
+       
 
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaAlas(1, false));
     }
 
     @Test
@@ -456,45 +455,45 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
         pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(5, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(5, false));
     }
 
     @Test
     public void siirraParastaOikealle4Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(4, false);
+      
         assertTrue(
-                onnistuiko);
+                 pelilauta.siirraNappulaaOikealle(4, false));
     }
 
     @Test
     public void siirraParastaOikealle5Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(5, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(5, false));
     }
 
     @Test
     public void siirraParastaVasemmalle3Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(3, false);
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(3, false));
     }
 
     @Test
     public void siirraParastaVasemmalle4Kertaa() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(4, false);
+       
         assertFalse(
-                onnistuiko);
+                 pelilauta.siirraNappulaaVasemmalle(4, false));
     }
 
     //********************************************************************
@@ -507,9 +506,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(1, false);
         pelilauta.pyoritaNappulaa(1, false);
 
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(4, false);
+      
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(4, false));
     }
 
     @Test
@@ -519,9 +518,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(1, false);
         pelilauta.pyoritaNappulaa(1, false);
 
-        boolean onnistuiko = pelilauta.siirraNappulaaOikealle(6, false);
+        
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaOikealle(6, false));
     }
 
     @Test
@@ -531,9 +530,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(1, false);
         pelilauta.pyoritaNappulaa(1, false);
 
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(3, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(3, false));
     }
 
     @Test
@@ -543,9 +542,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         pelilauta.siirraNappulaaAlas(1, false);
         pelilauta.pyoritaNappulaa(1, false);
 
-        boolean onnistuiko = pelilauta.siirraNappulaaVasemmalle(4, false);
+       
         assertFalse(
-                onnistuiko);
+                pelilauta.siirraNappulaaVasemmalle(4, false));
     }
 
     //Pyörimis testit lopuille nappuloille
@@ -554,9 +553,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Sininen sininen = new Sininen(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(sininen);
         pelilauta.siirraNappulaaAlas(3, true);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(2, true);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(2, true));
     }
 
     @Test
@@ -564,9 +563,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         Vihrea vihrea = new Vihrea(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(vihrea);
         pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(2, false);
+       
         assertTrue(
-                onnistuiko);
+                 pelilauta.pyoritaNappulaa(2, false));
     }
 
     @Test
@@ -574,9 +573,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         SininenL sininenL = new SininenL(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(sininenL);
         pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(4, false);
+       
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(4, false));
     }
 
     @Test
@@ -584,9 +583,9 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
         vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 4);
         pelilauta.uusiNappulaLaudalleNakyviin(vaaleanpunainenL);
         pelilauta.siirraNappulaaAlas(3, false);
-        boolean onnistuiko = pelilauta.pyoritaNappulaa(4, false);
+        
         assertTrue(
-                onnistuiko);
+                pelilauta.pyoritaNappulaa(4, false));
     }
 
     @Test
@@ -602,17 +601,17 @@ public class YksittainenNappulaLiikkuuPelilaudallaTest {
             if (nappula.isNappulaElossa() == false) {
                 break;
             }
-             pelilauta.siirraNappulaaVasemmalle(1, false);
+            pelilauta.siirraNappulaaVasemmalle(1, false);
             pelilauta.update();
             pelilauta.siirraNappulaaAlas(1, false);
             pelilauta.update();
-           
+
         }
 
         pelilauta.muutaNappulaMoykyksi();
         pelilauta.update();
         pelilauta.uusiNappulaNextista();
-        
+
 //        ParasNappula parasnappula = new ParasNappula(0, 4);
 // 
 //        pelilauta.uusiNappulaLaudalleNakyviin(parasnappula);
