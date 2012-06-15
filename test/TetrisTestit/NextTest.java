@@ -97,7 +97,7 @@ public class NextTest {
                 onnistuiko);
     }
 
-       @Test
+    @Test
     public void asetaNappulanPaikkaNextiin4() {
         Vihrea vihrea = new Vihrea(0, 4);
         next.tyhjennaNexti();
@@ -109,7 +109,7 @@ public class NextTest {
                 onnistuiko);
     }
 
-          @Test
+    @Test
     public void asetaNappulanPaikkaNextiin5() {
         SininenL sininenL = new SininenL(0, 7);
         next.setNappula(sininenL);
@@ -121,7 +121,7 @@ public class NextTest {
                 onnistuiko);
     }
 
-             @Test
+    @Test
     public void asetaNappulanPaikkaNextiin6() {
         vaaleanpunainenL vaaleanpunainenL = new vaaleanpunainenL(0, 4);
         next.setNappula(vaaleanpunainenL);
@@ -133,7 +133,7 @@ public class NextTest {
                 onnistuiko);
     }
 
-                @Test
+    @Test
     public void asetaNappulanPaikkaNextiin7() {
         ParasNappula parasnappula = new ParasNappula(0, 4);
         next.setNappula(parasnappula);
@@ -144,6 +144,4 @@ public class NextTest {
         assertFalse(
                 onnistuiko);
     }
-                
-
 }

@@ -184,9 +184,9 @@ public class Pelilauta {
      * asettaa nappulakansanpaikan laudalla
      */
     public void asetaNappulaKasanPaikkaLaudalla() {
-        int i=-2;
-        int rivinNumero=-2;
-        int sarakeNumero=-2;
+        int i=0;
+        int rivinNumero=0;
+        int sarakeNumero=0;
         ArrayList<Palanen> palaset = new ArrayList<Palanen>();
         try {
             palaset = moykky.getPalaset();
@@ -465,12 +465,13 @@ public class Pelilauta {
         if (nappula.getSade() == 0) {
             return null;
         }      
+        int alueenKoko = 2 * nappula.getSade() + 1;
         Palanen[][] tutkittavaAlue = new Palanen[tutkittavanAluuenKoko][tutkittavanAluuenKoko];
         Palanen keskipiste = nappula.getKeskipiste();
         int rivi = keskipiste.getRivi() - nappula.getSade();
         int sarake = keskipiste.getSarake() - nappula.getSade();
-        for (int i = 0; i < 2 * nappula.getSade() + 1; i++) {
-            for (int j = 0; j < 2 * nappula.getSade() + 1; j++) {
+        for (int i = 0; i < alueenKoko; i++) {
+            for (int j = 0; j < alueenKoko; j++) {
                 tutkittavaAlue[i][j]=annaVastaavaPalanen(rivi, i, sarake, j, tutkittavaAlue);
 
             }
